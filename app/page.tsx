@@ -363,6 +363,13 @@ export default function Home() {
               </p>
             </div>
 
+            <div className="about-cta-row">
+              <a href="/contact" className="about-consultation-button">
+                <span>Book a consultation</span><ArrowIcon />
+              </a>
+              <span className="about-cta-note">Private · Personal · By appointment</span>
+            </div>
+
             <div className="about-details">
               <div className="hours-card">
                 <div className="hours-heading">
