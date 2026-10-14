@@ -160,14 +160,17 @@ button, input { font: inherit; }
 .face-marker:hover .marker-label b,.face-marker:focus-visible .marker-label b,.face-marker.is-active .marker-label b { color: var(--gold); }
 .face-marker:hover .marker-line,.face-marker.is-active .marker-line { min-width: 38px; }
 .face-marker:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
-.marker-description { position: absolute; z-index: 25; display: grid; gap: 7px; width: 220px; padding: 14px 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; color: rgba(255,248,237,.78); background: linear-gradient(135deg,rgba(255,255,255,.13),rgba(8,27,51,.48)); box-shadow: 0 18px 44px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.12); backdrop-filter: blur(18px) saturate(145%); -webkit-backdrop-filter: blur(18px) saturate(145%); text-transform: none; letter-spacing: .015em; opacity: 0; visibility: hidden; transform: translateY(7px) scale(.97); transform-origin: top center; transition: opacity .22s ease,transform .22s ease,visibility .22s; pointer-events: none; }
+.marker-description { position: absolute; z-index: 25; display: grid; gap: 8px; width: min(240px,46vw); padding: 15px 17px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; color: rgba(255,248,237,.78); background: linear-gradient(135deg,rgba(255,255,255,.13),rgba(8,27,51,.48)); box-shadow: 0 18px 44px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.12); backdrop-filter: blur(18px) saturate(145%); -webkit-backdrop-filter: blur(18px) saturate(145%); text-transform: none; letter-spacing: .015em; opacity: 0; visibility: hidden; transform: translateX(7px) scale(.97); transform-origin: center left; transition: opacity .22s ease,transform .22s ease,visibility .22s; pointer-events: none; }
 .marker-description::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at 18% 0,rgba(240,208,144,.16),transparent 45%); pointer-events: none; }
 .marker-description small { position: relative; color: var(--gold); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
-.marker-description strong { position: relative; color: rgba(255,248,237,.82); font-size: 11px; font-weight: 300; line-height: 1.55; }
-.face-marker:hover .marker-description,.face-marker:focus-visible .marker-description,.face-marker.is-active .marker-description { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-.marker-botox .marker-description { left: 70%; top: 42px; }
-.marker-skincare .marker-description { right: 15%; top: 42px; }
-.marker-fillers .marker-description { left: 35%; bottom: 42px; transform-origin: bottom center; }
+.marker-description strong { position: relative; color: rgba(255,248,237,.9); font-size: 13px; font-weight: 300; line-height: 1.5; }
+.marker-description::after { content: ""; position: absolute; top: 28px; width: 31px; height: 20px; border-color: rgba(240,208,144,.75); pointer-events: none; }
+.face-marker:hover .marker-description,.face-marker:focus-visible .marker-description,.face-marker.is-active .marker-description { opacity: 1; visibility: visible; transform: translateX(0) scale(1); }
+.marker-botox .marker-description,.marker-fillers .marker-description { left: calc(100% + 30px); top: -26px; }
+.marker-botox .marker-description::after,.marker-fillers .marker-description::after { left: -31px; border-left: 1px solid; border-bottom: 1px solid; border-color: rgba(240,208,144,.75); }
+.marker-skincare .marker-description { right: calc(100% + 30px); top: -26px; transform: translateX(-7px) scale(.97); transform-origin: center right; }
+.marker-skincare .marker-description::after { right: -31px; border-right: 1px solid; border-bottom: 1px solid; border-color: rgba(240,208,144,.75); }
+.marker-skincare:hover .marker-description,.marker-skincare:focus-visible .marker-description,.marker-skincare.is-active .marker-description { transform: translateX(0) scale(1); }
 .marker-botox { left: 9%; top: 27%; width: 38%; }
 .marker-skincare { left: 58%; top: 46%; width: 38%; }
 .marker-fillers { left: 4%; top: 62%; width: 42%; }
