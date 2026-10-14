@@ -20,10 +20,9 @@ function ArrowIcon() {
 
 function BrandMark() {
   return (
-    <span className="relative grid h-11 w-11 place-items-center" aria-hidden="true">
-      <span className="absolute h-9 w-[19px] rotate-45 rounded-[100%] border border-[#f0d090]/80" />
-      <span className="absolute h-9 w-[19px] -rotate-45 rounded-[100%] border border-[#f0d090]/45" />
-      <span className="font-forum text-[17px] text-[#f0d090]">M</span>
+    <span className="brand-monogram" aria-hidden="true">
+      <span>H</span>
+      <i />
     </span>
   );
 }
@@ -124,9 +123,9 @@ function BeforeAfterPortrait() {
           />
 
           <div className="face-insights" aria-hidden="true">
-            <span className="face-marker marker-radiance"><i />Radiance</span>
-            <span className="face-marker marker-texture"><i />Texture</span>
-            <span className="face-marker marker-balance"><i />Balance</span>
+            <span className="face-marker marker-radiance"><i />Botox</span>
+            <span className="face-marker marker-texture"><i />Skincare</span>
+            <span className="face-marker marker-balance"><i />Dermal Fillers</span>
           </div>
         </div>
 
@@ -134,7 +133,7 @@ function BeforeAfterPortrait() {
           <span>01</span>
           <p>Drag to reveal</p>
           <span className="h-px flex-1 bg-[#f0d090]/25" />
-          <p>Signature skin renewal</p>
+          <p>Facial aesthetics</p>
         </div>
       </div>
     </div>
@@ -165,22 +164,22 @@ export default function Home() {
           <div className="intro-panel intro-panel-left" />
           <div className="intro-panel intro-panel-right" />
           <div className="intro-signature">
-            <span>ME</span>
+            <span>HW</span>
             <i />
-            <p>Beauty, considered.</p>
+            <p>Wellness, refined.</p>
           </div>
         </div>
         <div className="hero-grain" aria-hidden="true" />
         <div className="hero-radial" aria-hidden="true" />
         <div className="pointer-light" aria-hidden="true" />
-        <p className="vertical-signature" aria-hidden="true">The art of subtle transformation</p>
+        <p className="vertical-signature" aria-hidden="true">Hongxu Wellness · Yakima, Washington</p>
 
         <header className="hero-header">
-          <a href="/" className="brand" aria-label="Maison Éclat home">
+          <a href="/" className="brand" aria-label="Hongxu Wellness home">
             <BrandMark />
             <span>
-              <b>MAISON ÉCLAT</b>
-              <small>AESTHETIC ATELIER</small>
+              <b>HONGXU</b>
+              <small>WELLNESS</small>
             </span>
           </a>
 
@@ -193,7 +192,7 @@ export default function Home() {
           </nav>
 
           <a href="/contact" className="header-booking">
-            <span>Book a consultation</span><ArrowIcon />
+            <span>Book an appointment</span><ArrowIcon />
           </a>
 
           <button
@@ -215,27 +214,27 @@ export default function Home() {
 
         <div className="hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow"><span /> Bespoke beauty, thoughtfully refined</p>
+            <p className="eyebrow"><span /> Yakima&apos;s private wellness destination</p>
             <h1 id="hero-title">
-              <span>Reveal your</span>
-              <em>radiance.</em>
+              <span>Wellness,</span>
+              <em>beautifully yours.</em>
             </h1>
             <p className="hero-description">
-              A considered approach to modern aesthetics—where clinical precision, artistry and your natural beauty exist in perfect balance.
+              Personalized weight management, injectables, IV therapy, skincare and massage—thoughtfully curated in one private setting.
             </p>
 
             <div className="hero-actions">
               <a href="/services" className="primary-button">
-                Explore our treatments <ArrowIcon />
+                Explore our services <ArrowIcon />
               </a>
-              <a href="/about" className="text-link">
-                <span>Our philosophy</span><i aria-hidden="true" />
+              <a href="tel:+12066019801" className="text-link">
+                <span>206-601-9801</span><i aria-hidden="true" />
               </a>
             </div>
 
             <div className="hero-proof">
-              <span className="proof-monogram">ME</span>
-              <p><strong>Elevated results.</strong><br />Never an altered you.</p>
+              <span className="proof-monogram">HW</span>
+              <p><strong>By appointment only.</strong><br />Room #17 · Yakima, WA</p>
             </div>
           </div>
 
@@ -243,11 +242,11 @@ export default function Home() {
         </div>
 
         <div className="hero-footer">
-          <p>Private consultations · Bangkok</p>
+          <p>6101 Summitview Ave Ste 120 · Yakima, WA 98908</p>
           <div className="footer-values">
-            <span>Physician-led care</span><i />
-            <span>Tailored protocols</span><i />
-            <span>Beautifully subtle results</span>
+            <span>Weight Loss</span><i />
+            <span>IV Therapy</span><i />
+            <span>Massage Therapy</span>
           </div>
           <a href="https://instagram.com" aria-label="Instagram" className="social-link">
             <img src="/icons/instagram.svg" alt="" width="17" height="17" />

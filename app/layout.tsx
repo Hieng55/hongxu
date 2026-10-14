@@ -16,8 +16,8 @@ const forum = Forum({
 });
 
 export const metadata: Metadata = {
-  title: "Maison Éclat — Bespoke Aesthetic Care",
-  description: "Refined aesthetic treatments shaped around your natural beauty.",
+  title: "Hongxu Wellness — Yakima, Washington",
+  description: "Weight management, injectables, IV therapy, skincare and massage in Yakima, Washington.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 
