@@ -10,6 +10,30 @@ const navItems = [
   { label: "Contact us", href: "/contact" },
 ];
 
+const treatmentInsights = [
+  {
+    id: "botox",
+    title: "Botox",
+    area: "Expression areas",
+    price: "$10 / unit",
+    description: "A precise, personalized approach to common expression areas.",
+  },
+  {
+    id: "skincare",
+    title: "Skincare Facial",
+    area: "Skin tone & texture",
+    price: "From $65",
+    description: "Facial care selected around your skin and appointment goals.",
+  },
+  {
+    id: "fillers",
+    title: "Dermal Fillers",
+    area: "Facial balance",
+    price: "$400 / syringe",
+    description: "Thoughtful treatment planning focused on balance and proportion.",
+  },
+];
+
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
@@ -30,6 +54,8 @@ function BrandMark() {
 function BeforeAfterPortrait() {
   const [position, setPosition] = useState(6);
   const [isScanning, setIsScanning] = useState(true);
+  const [activeInsight, setActiveInsight] = useState("botox");
+  const selectedTreatment = treatmentInsights.find((item) => item.id === activeInsight) ?? treatmentInsights[0];
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -69,10 +95,21 @@ function BeforeAfterPortrait() {
 
   return (
     <div className={`portrait-composition ${isScanning ? "is-analyzing" : "analysis-ready"}`}>
-      <div className="gold-orbit" aria-hidden="true" />
-      <div className="orbit-sparkles" aria-hidden="true">
-        <i /><i /><i /><i /><i />
+      <div className="organic-aura" aria-hidden="true">
+        <i /><i /><i />
       </div>
+      <svg className="silk-ribbon" viewBox="0 0 820 720" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="ribbonGold" x1="70" y1="570" x2="730" y2="100" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#f0d090" stopOpacity="0" />
+            <stop offset=".43" stopColor="#f0d090" stopOpacity=".5" />
+            <stop offset=".7" stopColor="#fff0c6" stopOpacity=".22" />
+            <stop offset="1" stopColor="#f0d090" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M42 596C182 521 170 272 348 183C487 113 648 172 783 55" stroke="url(#ribbonGold)" strokeWidth="1.2" />
+        <path d="M8 631C194 583 232 370 365 305C518 230 680 300 814 181" stroke="url(#ribbonGold)" strokeWidth=".55" opacity=".6" />
+      </svg>
       <div className="portrait-frame">
         <div className="portrait-glow" aria-hidden="true" />
         <div className="portrait-crop">
@@ -122,19 +159,53 @@ function BeforeAfterPortrait() {
             onChange={(event) => handlePosition(Number(event.target.value))}
           />
 
-          <div className="face-insights" aria-hidden="true">
-            <span className="face-marker marker-radiance"><i />Botox</span>
-            <span className="face-marker marker-texture"><i />Skincare</span>
-            <span className="face-marker marker-balance"><i />Dermal Fillers</span>
+          <div className="face-insights" aria-label="Featured treatment points">
+            <button
+              type="button"
+              className={`face-marker marker-botox ${activeInsight === "botox" ? "is-active" : ""}`}
+              aria-pressed={activeInsight === "botox"}
+              onClick={() => setActiveInsight("botox")}
+              onMouseEnter={() => setActiveInsight("botox")}
+              onFocus={() => setActiveInsight("botox")}
+            >
+              <span className="marker-label"><b>Botox</b><small>$10 / unit</small></span>
+              <span className="marker-line" /><span className="treatment-dot" />
+            </button>
+            <button
+              type="button"
+              className={`face-marker marker-skincare ${activeInsight === "skincare" ? "is-active" : ""}`}
+              aria-pressed={activeInsight === "skincare"}
+              onClick={() => setActiveInsight("skincare")}
+              onMouseEnter={() => setActiveInsight("skincare")}
+              onFocus={() => setActiveInsight("skincare")}
+            >
+              <span className="treatment-dot" /><span className="marker-line" />
+              <span className="marker-label"><b>Skincare</b><small>From $65</small></span>
+            </button>
+            <button
+              type="button"
+              className={`face-marker marker-fillers ${activeInsight === "fillers" ? "is-active" : ""}`}
+              aria-pressed={activeInsight === "fillers"}
+              onClick={() => setActiveInsight("fillers")}
+              onMouseEnter={() => setActiveInsight("fillers")}
+              onFocus={() => setActiveInsight("fillers")}
+            >
+              <span className="marker-label"><b>Dermal Fillers</b><small>$400 / syringe</small></span>
+              <span className="marker-line" /><span className="treatment-dot" />
+            </button>
           </div>
         </div>
 
-        <div className="portrait-caption">
-          <span>01</span>
-          <p>Drag to reveal</p>
-          <span className="h-px flex-1 bg-[#f0d090]/25" />
-          <p>Facial aesthetics</p>
+        <div className="treatment-readout" aria-live="polite">
+          <span className="readout-number">{String(treatmentInsights.indexOf(selectedTreatment) + 1).padStart(2, "0")}</span>
+          <span className="readout-rule" />
+          <div>
+            <small>{selectedTreatment.area}</small>
+            <p><strong>{selectedTreatment.title}</strong> — {selectedTreatment.description}</p>
+          </div>
+          <b className="readout-price">{selectedTreatment.price}</b>
         </div>
+        <p className="treatment-note">Drag to compare · Select a glowing point to explore</p>
       </div>
     </div>
   );
