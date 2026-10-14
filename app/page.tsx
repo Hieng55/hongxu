@@ -281,13 +281,13 @@ export default function Home() {
 
         <div className="hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow"><span /> Yakima&apos;s private wellness destination</p>
+            <p className="eyebrow"><span /> HONGXU Wellness · Yakima, Washington</p>
             <h1 id="hero-title">
               <span>Wellness,</span>
               <em>beautifully yours.</em>
             </h1>
             <p className="hero-description">
-              Personalized weight management, injectables, IV therapy, skincare and massage—thoughtfully curated in one private setting.
+              At <strong>HONGXU Wellness</strong>, every visit is thoughtfully tailored to you—from weight management and injectables to IV therapy, skincare and massage, all in one discreet private setting.
             </p>
 
             <div className="hero-actions">
@@ -301,7 +301,7 @@ export default function Home() {
 
             <div className="hero-proof">
               <span className="proof-monogram">HW</span>
-              <p><strong>By appointment only.</strong><br />Room #17 · Yakima, WA</p>
+              <p><strong>Your private wellness destination.</strong><br />By appointment only · Room #17</p>
             </div>
           </div>
 
