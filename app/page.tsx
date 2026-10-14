@@ -32,13 +32,13 @@ const treatmentInsights = [
 ];
 
 const services = [
-  { title: "Weight Loss", detail: "Personalized, medically guided support shaped around your goals and lifestyle." },
-  { title: "Botox", detail: "Precise treatment planning for a refreshed look that still feels naturally you." },
-  { title: "Dermal Fillers", detail: "Thoughtful enhancement designed to restore balance, softness and proportion." },
-  { title: "IV Therapy", detail: "Hydration and nutrient support selected around how you want to feel." },
-  { title: "Injections", detail: "Wellness-focused injectable options offered in a discreet private setting." },
-  { title: "Skincare", detail: "Personalized facial care for tone, texture and healthy-looking radiance." },
-  { title: "Massage Therapy", detail: "Restorative bodywork created to release tension and help you reset." },
+  { title: "Weight Loss", image: "/images/services/weight-loss.webp", detail: "Personalized, medically guided support shaped around your goals and lifestyle." },
+  { title: "Botox", image: "/images/services/botox.webp", detail: "Precise treatment planning for a refreshed look that still feels naturally you." },
+  { title: "Dermal Fillers", image: "/images/services/dermal-fillers.webp", detail: "Thoughtful enhancement designed to restore balance, softness and proportion." },
+  { title: "IV Therapy", image: "/images/services/iv-therapy.webp", detail: "Hydration and nutrient support selected around how you want to feel." },
+  { title: "Injections", image: "/images/services/injections.webp", detail: "Wellness-focused injectable options offered in a discreet private setting." },
+  { title: "Skincare", image: "/images/services/skincare.webp", detail: "Personalized facial care for tone, texture and healthy-looking radiance." },
+  { title: "Massage Therapy", image: "/images/services/massage-therapy.webp", detail: "Restorative bodywork created to release tension and help you reset." },
 ];
 
 function ArrowIcon() {
@@ -422,35 +422,30 @@ export default function Home() {
 
       <section id="services" className="services-section" aria-labelledby="services-title">
         <div className="services-number" aria-hidden="true">03</div>
-        <div className="services-intro">
+        <div className="services-heading">
           <p className="section-kicker"><span /> Our services</p>
           <h2 id="services-title">Wellness, in <em>every detail.</em></h2>
-          <p>
+          <p className="services-description">
             A considered collection of aesthetic and wellness services, personalized for where you are and how you want to feel.
           </p>
           <a href="/contact" className="services-consultation">
             Find your treatment <ArrowIcon />
           </a>
-
-          <div className="services-emblem" aria-hidden="true">
-            <div className="services-orbit orbit-one"><i /><i /></div>
-            <div className="services-orbit orbit-two"><i /><i /></div>
-            <div className="services-monogram">
-              <img src="/images/hongxu-logo.png" alt="" width="730" height="728" />
-            </div>
-            <span>Seven paths.<br />One private destination.</span>
-          </div>
         </div>
 
-        <div className="services-index">
+        <div className="services-grid">
           {services.map((service, index) => (
-            <article className="service-row" key={service.title}>
-              <span className="service-index">{String(index + 1).padStart(2, "0")}</span>
-              <div className="service-name">
-                <h3>{service.title}</h3>
-                <p>{service.detail}</p>
+            <article className={`service-card service-card-${index + 1}`} key={service.title}>
+              <img src={service.image} alt={`${service.title} service at HONGXU Wellness`} width="1122" height="1402" loading="lazy" />
+              <div className="service-card-shade" aria-hidden="true" />
+              <span className="service-card-index">{String(index + 1).padStart(2, "0")}</span>
+              <div className="service-card-content">
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.detail}</p>
+                </div>
+                <span className="service-card-arrow" aria-hidden="true"><ArrowIcon /></span>
               </div>
-              <span className="service-arrow" aria-hidden="true"><ArrowIcon /></span>
             </article>
           ))}
         </div>
