@@ -326,7 +326,6 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="hero-transition" aria-hidden="true" />
       </section>
 
       <section id="about" className="about-section" aria-labelledby="about-title">
