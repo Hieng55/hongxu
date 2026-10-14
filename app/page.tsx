@@ -15,21 +15,18 @@ const treatmentInsights = [
     id: "botox",
     title: "Botox",
     area: "Expression areas",
-    price: "$10 / unit",
     description: "A precise, personalized approach to common expression areas.",
   },
   {
     id: "skincare",
     title: "Skincare Facial",
     area: "Skin tone & texture",
-    price: "From $65",
     description: "Facial care selected around your skin and appointment goals.",
   },
   {
     id: "fillers",
     title: "Dermal Fillers",
     area: "Facial balance",
-    price: "$400 / syringe",
     description: "Thoughtful treatment planning focused on balance and proportion.",
   },
 ];
@@ -133,6 +130,15 @@ function BeforeAfterPortrait() {
               height="760"
               draggable="false"
             />
+            <img
+              src="/images/before.png"
+              alt=""
+              className="portrait-image after-hair-match"
+              width="760"
+              height="760"
+              draggable="false"
+              aria-hidden="true"
+            />
           </div>
 
           <span className="image-label image-label-before">Before</span>
@@ -168,7 +174,7 @@ function BeforeAfterPortrait() {
               onMouseEnter={() => setActiveInsight("botox")}
               onFocus={() => setActiveInsight("botox")}
             >
-              <span className="marker-label"><b>Botox</b><small>$10 / unit</small></span>
+              <span className="marker-label"><b>Botox</b></span>
               <span className="marker-line" /><span className="treatment-dot" />
             </button>
             <button
@@ -180,7 +186,7 @@ function BeforeAfterPortrait() {
               onFocus={() => setActiveInsight("skincare")}
             >
               <span className="treatment-dot" /><span className="marker-line" />
-              <span className="marker-label"><b>Skincare</b><small>From $65</small></span>
+              <span className="marker-label"><b>Skincare</b></span>
             </button>
             <button
               type="button"
@@ -190,7 +196,7 @@ function BeforeAfterPortrait() {
               onMouseEnter={() => setActiveInsight("fillers")}
               onFocus={() => setActiveInsight("fillers")}
             >
-              <span className="marker-label"><b>Dermal Fillers</b><small>$400 / syringe</small></span>
+              <span className="marker-label"><b>Dermal Fillers</b></span>
               <span className="marker-line" /><span className="treatment-dot" />
             </button>
           </div>
@@ -203,7 +209,6 @@ function BeforeAfterPortrait() {
             <small>{selectedTreatment.area}</small>
             <p><strong>{selectedTreatment.title}</strong> — {selectedTreatment.description}</p>
           </div>
-          <b className="readout-price">{selectedTreatment.price}</b>
         </div>
         <p className="treatment-note">Drag to compare · Select a glowing point to explore</p>
       </div>

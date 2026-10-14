@@ -144,6 +144,11 @@ button, input { font: inherit; }
 .portrait-image { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: center top; user-select: none; filter: saturate(.86) contrast(1.02); }
 .after-layer { position: absolute; z-index: 2; inset: 0; will-change: clip-path; }
 .after-layer .portrait-image { filter: saturate(.96) contrast(1.01) brightness(1.03); }
+.after-layer .after-hair-match {
+  z-index: 2;
+  filter: saturate(.86) contrast(1.02);
+  clip-path: polygon(19% 0,81% 0,82% 31%,77% 39%,72% 34%,65% 27%,57% 21%,50% 17%,42% 21%,34% 27%,28% 34%,23% 40%,18% 32%);
+}
 .image-label { position: absolute; z-index: 12; bottom: 24px; padding: 8px 13px; border: 1px solid rgba(240,208,144,.22); color: rgba(255,248,237,.78); background: rgba(6,22,47,.45); backdrop-filter: blur(12px); text-transform: uppercase; letter-spacing: .17em; font-size: 11px; }
 .image-label-before { right: 22px; }.image-label-after { left: 22px; color: var(--gold); }
 .scan-divider { position: absolute; z-index: 10; top: 0; bottom: 0; width: 1px; background: rgba(255,244,200,.9); box-shadow: 0 0 8px #f0d090, 0 0 24px rgba(240,208,144,.6); translate: -50% 0; pointer-events: none; }
@@ -155,29 +160,28 @@ button, input { font: inherit; }
 .comparison-range:focus-visible + * { outline: 1px solid var(--gold); }
 .face-insights { position: absolute; z-index: 18; inset: 0; pointer-events: none; }
 .face-marker { position: absolute; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: 0; color: rgba(255,248,237,.76); background: transparent; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; opacity: 0; transform: translateY(8px); pointer-events: auto; cursor: pointer; text-align: left; }
-.marker-label { display: grid; gap: 2px; white-space: nowrap; }
+.marker-label { display: grid; gap: 2px; white-space: nowrap; text-shadow: 0 2px 12px rgba(6,22,47,.9); }
 .marker-label b { font-size: 11px; font-weight: 500; transition: color .25s; }
 .marker-label small { color: rgba(240,208,144,.55); font-size: 11px; letter-spacing: .08em; }
 .marker-line { flex: 1; min-width: 24px; height: 1px; background: linear-gradient(90deg,rgba(240,208,144,.28),rgba(240,208,144,.76)); transition: opacity .25s, min-width .25s; }
 .marker-skincare .marker-line { background: linear-gradient(90deg,rgba(240,208,144,.76),rgba(240,208,144,.28)); }
-.treatment-dot { position: relative; flex: 0 0 auto; width: 9px; height: 9px; border: 1px solid #fff0c4; border-radius: 50%; background: #f0d090; box-shadow: 0 0 7px #f0d090,0 0 16px rgba(240,208,144,.68); }
-.treatment-dot::after { content: ""; position: absolute; inset: -8px; border: 1px solid rgba(240,208,144,.4); border-radius: 50%; animation: treatment-pulse 2.8s ease-out infinite; }
+.treatment-dot { position: relative; flex: 0 0 auto; width: 9px; height: 9px; border: 1px solid #fff0c4; border-radius: 50%; background: #f0d090; box-shadow: 0 0 7px #f0d090,0 0 16px rgba(240,208,144,.68); animation: treatment-blink 1.7s ease-in-out infinite; }
+.treatment-dot::after { content: ""; position: absolute; inset: -8px; border: 1px solid rgba(240,208,144,.55); border-radius: 50%; animation: treatment-pulse 1.7s ease-out infinite; }
 .face-marker:hover .marker-label b,.face-marker:focus-visible .marker-label b,.face-marker.is-active .marker-label b { color: var(--gold); }
 .face-marker:hover .marker-line,.face-marker.is-active .marker-line { min-width: 38px; }
 .face-marker:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
-.marker-botox { left: 3%; top: 27%; width: 44%; }
+.marker-botox { left: 9%; top: 27%; width: 38%; }
 .marker-skincare { left: 58%; top: 46%; width: 38%; }
 .marker-fillers { left: 4%; top: 62%; width: 42%; }
 .analysis-ready .face-marker { animation: marker-in .6s ease forwards; }
 .analysis-ready .marker-skincare { animation-delay: .16s; }.analysis-ready .marker-fillers { animation-delay: .3s; }
-.treatment-readout { display: grid; grid-template-columns: auto 38px minmax(0,1fr) auto; align-items: center; gap: 12px; min-height: 72px; margin-top: 13px; padding: 11px 15px; border: 1px solid rgba(240,208,144,.14); background: linear-gradient(90deg,rgba(13,40,67,.72),rgba(13,40,67,.18)); }
+.treatment-readout { display: grid; grid-template-columns: auto 38px minmax(0,1fr); align-items: center; gap: 12px; min-height: 78px; margin-top: 13px; padding: 13px 16px; border: 1px solid rgba(240,208,144,.14); background: linear-gradient(90deg,rgba(13,40,67,.72),rgba(13,40,67,.18)); overflow: visible; }
 .readout-number { color: var(--gold); font-size: 11px; letter-spacing: .13em; }
 .readout-rule { height: 1px; background: rgba(240,208,144,.42); }
 .treatment-readout div { min-width: 0; }
 .treatment-readout small { color: rgba(240,208,144,.56); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
 .treatment-readout p { margin: 4px 0 0; color: rgba(255,248,237,.62); font-size: 11px; line-height: 1.45; }
 .treatment-readout strong { color: rgba(255,248,237,.94); font-weight: 500; }
-.readout-price { color: var(--gold); font-size: 11px; font-weight: 500; white-space: nowrap; }
 .treatment-note { margin: 8px 0 0; color: rgba(255,248,237,.3); font-size: 11px; letter-spacing: .13em; text-align: center; text-transform: uppercase; }
 
 .hero-footer { position: absolute; z-index: 25; left: clamp(26px, 5vw, 84px); right: clamp(26px, 5vw, 84px); bottom: 23px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; color: rgba(255,248,237,.38); text-transform: uppercase; letter-spacing: .15em; font-size: 11px; }
@@ -199,6 +203,7 @@ button, input { font: inherit; }
 @keyframes marker-in { to { opacity: 1; transform: none; } }
 @keyframes sparkle { 0%,100% { opacity: .15; transform: scale(.6); } 50% { opacity: 1; transform: scale(1.6); } }
 @keyframes treatment-pulse { 0% { opacity: .8; transform: scale(.55); } 70%,100% { opacity: 0; transform: scale(1.35); } }
+@keyframes treatment-blink { 0%,100% { opacity: .72; box-shadow: 0 0 5px #f0d090,0 0 12px rgba(240,208,144,.45); } 50% { opacity: 1; box-shadow: 0 0 10px #fff4c8,0 0 24px rgba(240,208,144,.95),0 0 38px rgba(240,208,144,.42); } }
 @keyframes silk-breathe { 0%,100% { opacity: .58; transform: translate3d(0,0,0); } 50% { opacity: .9; transform: translate3d(0,-5px,0); } }
 
 @media (max-width: 1100px) {
@@ -250,7 +255,6 @@ button, input { font: inherit; }
   .organic-aura { width: 112vw; bottom: -6%; }
   .silk-ribbon { width: 112vw; }
   .treatment-readout { grid-template-columns: auto 22px minmax(0,1fr); padding: 10px 11px; }
-  .readout-price { display: none; }
   .hero-footer { position: absolute; bottom: 18px; left: 20px; right: 20px; grid-template-columns: 1fr auto; }
 }
 
@@ -267,7 +271,7 @@ button, input { font: inherit; }
   .face-marker { gap: 5px; }
   .marker-label small { display: none; }
   .marker-line { min-width: 15px; }
-  .marker-botox { left: 2%; width: 45%; }
+  .marker-botox { left: 8%; width: 39%; }
   .marker-skincare { left: 57%; width: 41%; }
   .marker-fillers { left: 2%; width: 45%; }
 }
