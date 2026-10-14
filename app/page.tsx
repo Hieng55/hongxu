@@ -42,8 +42,7 @@ function ArrowIcon() {
 function BeforeAfterPortrait() {
   const [position, setPosition] = useState(6);
   const [isScanning, setIsScanning] = useState(true);
-  const [activeInsight, setActiveInsight] = useState("botox");
-  const selectedTreatment = treatmentInsights.find((item) => item.id === activeInsight) ?? treatmentInsights[0];
+  const [activeInsight, setActiveInsight] = useState<string | null>(null);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -151,48 +150,57 @@ function BeforeAfterPortrait() {
             <button
               type="button"
               className={`face-marker marker-botox ${activeInsight === "botox" ? "is-active" : ""}`}
-              aria-pressed={activeInsight === "botox"}
-              onClick={() => setActiveInsight("botox")}
+              aria-expanded={activeInsight === "botox"}
+              onClick={() => setActiveInsight(activeInsight === "botox" ? null : "botox")}
               onMouseEnter={() => setActiveInsight("botox")}
+              onMouseLeave={() => setActiveInsight(null)}
               onFocus={() => setActiveInsight("botox")}
+              onBlur={() => setActiveInsight(null)}
             >
               <span className="marker-label"><b>Botox</b></span>
               <span className="marker-line" /><span className="treatment-dot" />
+              <span className="marker-description">
+                <small>{treatmentInsights[0].area}</small>
+                <strong>{treatmentInsights[0].description}</strong>
+              </span>
             </button>
             <button
               type="button"
               className={`face-marker marker-skincare ${activeInsight === "skincare" ? "is-active" : ""}`}
-              aria-pressed={activeInsight === "skincare"}
-              onClick={() => setActiveInsight("skincare")}
+              aria-expanded={activeInsight === "skincare"}
+              onClick={() => setActiveInsight(activeInsight === "skincare" ? null : "skincare")}
               onMouseEnter={() => setActiveInsight("skincare")}
+              onMouseLeave={() => setActiveInsight(null)}
               onFocus={() => setActiveInsight("skincare")}
+              onBlur={() => setActiveInsight(null)}
             >
               <span className="treatment-dot" /><span className="marker-line" />
               <span className="marker-label"><b>Skincare</b></span>
+              <span className="marker-description">
+                <small>{treatmentInsights[1].area}</small>
+                <strong>{treatmentInsights[1].description}</strong>
+              </span>
             </button>
             <button
               type="button"
               className={`face-marker marker-fillers ${activeInsight === "fillers" ? "is-active" : ""}`}
-              aria-pressed={activeInsight === "fillers"}
-              onClick={() => setActiveInsight("fillers")}
+              aria-expanded={activeInsight === "fillers"}
+              onClick={() => setActiveInsight(activeInsight === "fillers" ? null : "fillers")}
               onMouseEnter={() => setActiveInsight("fillers")}
+              onMouseLeave={() => setActiveInsight(null)}
               onFocus={() => setActiveInsight("fillers")}
+              onBlur={() => setActiveInsight(null)}
             >
               <span className="marker-label"><b>Dermal Fillers</b></span>
               <span className="marker-line" /><span className="treatment-dot" />
+              <span className="marker-description">
+                <small>{treatmentInsights[2].area}</small>
+                <strong>{treatmentInsights[2].description}</strong>
+              </span>
             </button>
           </div>
         </div>
 
-        <div className="treatment-readout" aria-live="polite">
-          <span className="readout-number">{String(treatmentInsights.indexOf(selectedTreatment) + 1).padStart(2, "0")}</span>
-          <span className="readout-rule" />
-          <div>
-            <small>{selectedTreatment.area}</small>
-            <p><strong>{selectedTreatment.title}</strong> — {selectedTreatment.description}</p>
-          </div>
-        </div>
-        <p className="treatment-note">Drag to compare · Select a glowing point to explore</p>
       </div>
     </div>
   );
