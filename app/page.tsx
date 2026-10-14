@@ -130,15 +130,7 @@ function BeforeAfterPortrait() {
               height="760"
               draggable="false"
             />
-            <img
-              src="/images/before.png"
-              alt=""
-              className="portrait-image after-hair-match"
-              width="760"
-              height="760"
-              draggable="false"
-              aria-hidden="true"
-            />
+            <span className="after-hair-tone" aria-hidden="true" />
           </div>
 
           <span className="image-label image-label-before">Before</span>

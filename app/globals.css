@@ -144,10 +144,14 @@ button, input { font: inherit; }
 .portrait-image { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: center top; user-select: none; filter: saturate(.86) contrast(1.02); }
 .after-layer { position: absolute; z-index: 2; inset: 0; will-change: clip-path; }
 .after-layer .portrait-image { filter: saturate(.96) contrast(1.01) brightness(1.03); }
-.after-layer .after-hair-match {
+.after-hair-tone {
+  position: absolute;
   z-index: 2;
-  filter: saturate(.86) contrast(1.02);
-  clip-path: polygon(19% 0,81% 0,82% 31%,77% 39%,72% 34%,65% 27%,57% 21%,50% 17%,42% 21%,34% 27%,28% 34%,23% 40%,18% 32%);
+  inset: 0;
+  pointer-events: none;
+  background: rgba(68,38,27,.2);
+  mix-blend-mode: multiply;
+  clip-path: polygon(25% 0,75% 0,81% 10%,84% 25%,83% 34%,79% 42%,75% 38%,71% 31%,64% 26%,58% 21%,50% 18%,42% 21%,35% 26%,29% 32%,25% 39%,20% 43%,17% 34%,18% 21%,21% 10%);
 }
 .image-label { position: absolute; z-index: 12; bottom: 24px; padding: 8px 13px; border: 1px solid rgba(240,208,144,.22); color: rgba(255,248,237,.78); background: rgba(6,22,47,.45); backdrop-filter: blur(12px); text-transform: uppercase; letter-spacing: .17em; font-size: 11px; }
 .image-label-before { right: 22px; }.image-label-after { left: 22px; color: var(--gold); }
