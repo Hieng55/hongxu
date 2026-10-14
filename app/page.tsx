@@ -43,6 +43,9 @@ function BeforeAfterPortrait() {
   const [position, setPosition] = useState(6);
   const [isScanning, setIsScanning] = useState(true);
   const [activeInsight, setActiveInsight] = useState<string | null>(null);
+  const selectedTreatment = activeInsight
+    ? treatmentInsights.find((item) => item.id === activeInsight) ?? null
+    : null;
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -159,10 +162,6 @@ function BeforeAfterPortrait() {
             >
               <span className="marker-label"><b>Botox</b></span>
               <span className="marker-line" /><span className="treatment-dot" />
-              <span className="marker-description">
-                <small>{treatmentInsights[0].area}</small>
-                <strong>{treatmentInsights[0].description}</strong>
-              </span>
             </button>
             <button
               type="button"
@@ -176,10 +175,6 @@ function BeforeAfterPortrait() {
             >
               <span className="treatment-dot" /><span className="marker-line" />
               <span className="marker-label"><b>Skincare</b></span>
-              <span className="marker-description">
-                <small>{treatmentInsights[1].area}</small>
-                <strong>{treatmentInsights[1].description}</strong>
-              </span>
             </button>
             <button
               type="button"
@@ -193,12 +188,22 @@ function BeforeAfterPortrait() {
             >
               <span className="marker-label"><b>Dermal Fillers</b></span>
               <span className="marker-line" /><span className="treatment-dot" />
-              <span className="marker-description">
-                <small>{treatmentInsights[2].area}</small>
-                <strong>{treatmentInsights[2].description}</strong>
-              </span>
             </button>
           </div>
+        </div>
+
+        <div
+          className={`treatment-callout ${selectedTreatment ? "is-visible" : ""} ${activeInsight ? `insight-${activeInsight}` : ""}`}
+          aria-live="polite"
+        >
+          <span className="callout-elbow" aria-hidden="true" />
+          {selectedTreatment && (
+            <div className="callout-card">
+              <small>{selectedTreatment.area}</small>
+              <strong>{selectedTreatment.title}</strong>
+              <p>{selectedTreatment.description}</p>
+            </div>
+          )}
         </div>
 
       </div>

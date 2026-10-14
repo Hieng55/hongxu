@@ -160,22 +160,23 @@ button, input { font: inherit; }
 .face-marker:hover .marker-label b,.face-marker:focus-visible .marker-label b,.face-marker.is-active .marker-label b { color: var(--gold); }
 .face-marker:hover .marker-line,.face-marker.is-active .marker-line { min-width: 38px; }
 .face-marker:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
-.marker-description { position: absolute; z-index: 25; display: grid; gap: 8px; width: min(240px,46vw); padding: 15px 17px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; color: rgba(255,248,237,.78); background: linear-gradient(135deg,rgba(255,255,255,.13),rgba(8,27,51,.48)); box-shadow: 0 18px 44px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.12); backdrop-filter: blur(18px) saturate(145%); -webkit-backdrop-filter: blur(18px) saturate(145%); text-transform: none; letter-spacing: .015em; opacity: 0; visibility: hidden; transform: translateX(7px) scale(.97); transform-origin: center left; transition: opacity .22s ease,transform .22s ease,visibility .22s; pointer-events: none; }
-.marker-description::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at 18% 0,rgba(240,208,144,.16),transparent 45%); pointer-events: none; }
-.marker-description small { position: relative; color: var(--gold); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
-.marker-description strong { position: relative; color: rgba(255,248,237,.9); font-size: 13px; font-weight: 300; line-height: 1.5; }
-.marker-description::after { content: ""; position: absolute; top: 28px; width: 31px; height: 20px; border-color: rgba(240,208,144,.75); pointer-events: none; }
-.face-marker:hover .marker-description,.face-marker:focus-visible .marker-description,.face-marker.is-active .marker-description { opacity: 1; visibility: visible; transform: translateX(0) scale(1); }
-.marker-botox .marker-description,.marker-fillers .marker-description { left: calc(100% + 30px); top: -26px; }
-.marker-botox .marker-description::after,.marker-fillers .marker-description::after { left: -31px; border-left: 1px solid; border-bottom: 1px solid; border-color: rgba(240,208,144,.75); }
-.marker-skincare .marker-description { right: calc(100% + 30px); top: -26px; transform: translateX(-7px) scale(.97); transform-origin: center right; }
-.marker-skincare .marker-description::after { right: -31px; border-right: 1px solid; border-bottom: 1px solid; border-color: rgba(240,208,144,.75); }
-.marker-skincare:hover .marker-description,.marker-skincare:focus-visible .marker-description,.marker-skincare.is-active .marker-description { transform: translateX(0) scale(1); }
 .marker-botox { left: 9%; top: 27%; width: 38%; }
 .marker-skincare { left: 58%; top: 46%; width: 38%; }
 .marker-fillers { left: 4%; top: 62%; width: 42%; }
 .analysis-ready .face-marker { animation: marker-in .6s ease forwards; }
 .analysis-ready .marker-skincare { animation-delay: .16s; }.analysis-ready .marker-fillers { animation-delay: .3s; }
+.treatment-callout { --point-x: 47%; --point-y: 31%; position: absolute; z-index: 22; inset: 0; opacity: 0; visibility: hidden; transition: opacity .22s ease,visibility .22s; pointer-events: none; }
+.treatment-callout.insight-skincare { --point-x: 58%; --point-y: 50%; }
+.treatment-callout.insight-fillers { --point-x: 46%; --point-y: 66%; }
+.treatment-callout.is-visible { opacity: 1; visibility: visible; }
+.callout-elbow { position: absolute; left: -40px; right: calc(100% - var(--point-x)); top: 94px; height: calc(var(--point-y) - 94px); border-top: 1px solid rgba(240,208,144,.72); border-right: 1px solid rgba(240,208,144,.72); filter: drop-shadow(0 0 5px rgba(240,208,144,.38)); }
+.callout-elbow::before { content: ""; position: absolute; left: -4px; top: -4px; width: 7px; height: 7px; border: 1px solid rgba(240,208,144,.8); border-radius: 50%; background: rgba(6,22,47,.8); }
+.callout-card { position: absolute; left: -270px; top: 35px; display: grid; gap: 7px; width: 230px; min-height: 118px; padding: 17px 18px; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: linear-gradient(135deg,rgba(255,255,255,.14),rgba(8,27,51,.5)); box-shadow: 0 20px 55px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.14); backdrop-filter: blur(20px) saturate(145%); -webkit-backdrop-filter: blur(20px) saturate(145%); transform: translateX(-10px) scale(.98); transform-origin: right center; animation: callout-in .24s ease forwards; }
+.callout-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at 100% 42%,rgba(240,208,144,.17),transparent 48%); }
+.callout-card small,.callout-card strong,.callout-card p { position: relative; }
+.callout-card small { color: var(--gold); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
+.callout-card strong { color: rgba(255,248,237,.96); font-family: var(--font-forum),serif; font-size: 18px; font-weight: 400; }
+.callout-card p { margin: 0; color: rgba(255,248,237,.82); font-size: 13px; font-weight: 300; line-height: 1.5; }
 
 .hero-footer { position: absolute; z-index: 25; left: clamp(26px, 5vw, 84px); right: clamp(26px, 5vw, 84px); bottom: 23px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; color: rgba(255,248,237,.38); text-transform: uppercase; letter-spacing: .15em; font-size: 11px; }
 .hero-footer p { margin: 0; }
@@ -198,6 +199,7 @@ button, input { font: inherit; }
 @keyframes treatment-pulse { 0% { opacity: .8; transform: scale(.55); } 70%,100% { opacity: 0; transform: scale(1.35); } }
 @keyframes treatment-blink { 0%,100% { opacity: .72; box-shadow: 0 0 5px #f0d090,0 0 12px rgba(240,208,144,.45); } 50% { opacity: 1; box-shadow: 0 0 10px #fff4c8,0 0 24px rgba(240,208,144,.95),0 0 38px rgba(240,208,144,.42); } }
 @keyframes silk-breathe { 0%,100% { opacity: .58; transform: translate3d(0,0,0); } 50% { opacity: .9; transform: translate3d(0,-5px,0); } }
+@keyframes callout-in { to { transform: translateX(0) scale(1); } }
 
 @media (max-width: 1100px) {
   .desktop-nav { gap: 20px; }
@@ -247,6 +249,9 @@ button, input { font: inherit; }
   .portrait-crop { aspect-ratio: 1 / 1.05; border-radius: 46% 46% 2px 2px; }
   .organic-aura { width: 112vw; bottom: -6%; }
   .silk-ribbon { width: 112vw; }
+  .callout-card { left: 12px; top: 16px; width: 160px; min-height: 0; padding: 13px 14px; }
+  .callout-card strong { font-size: 16px; }
+  .callout-elbow { left: 172px; top: 84px; height: calc(var(--point-y) - 84px); }
   .hero-footer { position: absolute; bottom: 18px; left: 20px; right: 20px; grid-template-columns: 1fr auto; }
 }
 
