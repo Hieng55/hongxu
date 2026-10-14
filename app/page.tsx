@@ -326,10 +326,10 @@ export default function Home() {
             </a>
           </div>
         </div>
+        <div className="hero-transition" aria-hidden="true" />
       </section>
 
       <section id="about" className="about-section" aria-labelledby="about-title">
-        <div className="section-blend" aria-hidden="true" />
         <div className="about-ambient" aria-hidden="true" />
         <div className="about-number" aria-hidden="true">02</div>
 
