@@ -315,9 +315,14 @@ export default function Home() {
             <span>IV Therapy</span><i />
             <span>Massage Therapy</span>
           </div>
-          <a href="https://instagram.com" aria-label="Instagram" className="social-link">
-            <img src="/icons/instagram.svg" alt="" width="17" height="17" />
-          </a>
+          <div className="social-links" aria-label="HONGXU Wellness social media">
+            <a href="https://www.facebook.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="HONGXU Wellness on Facebook" className="social-link">
+              <img src="/icons/facebook.svg" alt="" width="18" height="18" />
+            </a>
+            <a href="https://www.instagram.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="HONGXU Wellness on Instagram" className="social-link">
+              <img src="/icons/instagram.svg" alt="" width="18" height="18" />
+            </a>
+          </div>
         </div>
       </section>
     </main>
