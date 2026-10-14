@@ -39,15 +39,6 @@ function ArrowIcon() {
   );
 }
 
-function BrandMark() {
-  return (
-    <span className="brand-monogram" aria-hidden="true">
-      <span>H</span>
-      <i />
-    </span>
-  );
-}
-
 function BeforeAfterPortrait() {
   const [position, setPosition] = useState(6);
   const [isScanning, setIsScanning] = useState(true);
@@ -243,11 +234,7 @@ export default function Home() {
 
         <header className="hero-header">
           <a href="/" className="brand" aria-label="Hongxu Wellness home">
-            <BrandMark />
-            <span>
-              <b>HONGXU</b>
-              <small>WELLNESS</small>
-            </span>
+            <img className="brand-logo" src="/images/hongxu-logo.png" alt="Hongxu Wellness" width="730" height="728" />
           </a>
 
           <nav className="desktop-nav" aria-label="Primary navigation">
