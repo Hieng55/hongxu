@@ -31,16 +31,6 @@ const treatmentInsights = [
   },
 ];
 
-const openingHours = [
-  ["Monday", "9:30 AM–8 PM"],
-  ["Tuesday", "9:30 AM–8 PM"],
-  ["Wednesday", "9:30 AM–8 PM"],
-  ["Thursday", "9:30 AM–8 PM"],
-  ["Friday", "9:30 AM–8 PM"],
-  ["Saturday", "Closed"],
-  ["Sunday", "Closed"],
-];
-
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
@@ -339,51 +329,76 @@ export default function Home() {
       </section>
 
       <section id="about" className="about-section" aria-labelledby="about-title">
+        <div className="section-blend" aria-hidden="true" />
         <div className="about-ambient" aria-hidden="true" />
         <div className="about-number" aria-hidden="true">02</div>
 
-        <div className="about-visual">
-          <div className="about-image-frame">
-            <img src="/images/about-treatment-room.png" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" />
-            <span className="about-image-line" aria-hidden="true" />
-          </div>
-          <div className="about-image-caption">
-            <span>Private care</span>
-            <i />
-            <span>Yakima, WA</span>
-          </div>
-        </div>
-
-        <div className="about-content">
-          <p className="section-kicker"><span /> About HONGXU</p>
-          <h2 id="about-title">A quieter kind of <em>wellness.</em></h2>
-          <p className="about-lead">
-            HONGXU Wellness is a private, appointment-only studio where modern aesthetics and whole-body care meet with intention.
-          </p>
-          <p className="about-copy">
-            From personalized weight management and injectables to IV therapy, skincare and massage, every visit is considered around your comfort, goals and natural sense of self.
-          </p>
-
-          <div className="about-details">
-            <div className="hours-card">
-              <div className="hours-heading">
-                <span>Studio hours</span>
-                <small>By appointment only</small>
+        <div className="about-layout">
+          <div className="about-visual">
+            <div className="about-image-shell">
+              <div className="about-image-frame">
+                <img src="/images/about-treatment-room.png" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" />
+                <span className="about-image-line" aria-hidden="true" />
               </div>
-              <div className="hours-list">
-                {openingHours.map(([day, time]) => (
-                  <div className={`hours-row ${time === "Closed" ? "is-closed" : ""}`} key={day}>
-                    <span>{day}</span><i aria-hidden="true" /><strong>{time}</strong>
-                  </div>
-                ))}
+              <div className="studio-plaque">
+                <span>Private studio</span>
+                <strong>Room #17 · Yakima</strong>
               </div>
             </div>
+            <div className="about-image-caption">
+              <span>Modern aesthetics</span>
+              <i />
+              <span>Whole-body care</span>
+            </div>
+          </div>
 
-            <div className="visit-card">
-              <span className="visit-label">Visit us</span>
-              <p>6101 Summitview Ave<br />Ste 120, Room #17<br />Yakima, WA 98908</p>
-              <a href="https://share.google/Bcqw7UswswmfnbVus" target="_blank" rel="noreferrer">
-                Open in Google Maps <ArrowIcon />
+          <div className="about-content">
+            <p className="section-kicker"><span /> The HONGXU approach</p>
+            <h2 id="about-title">Care that feels <em>entirely yours.</em></h2>
+            <div className="about-story">
+              <p className="about-lead">
+                HONGXU Wellness is Yakima&apos;s private destination for thoughtful aesthetics and whole-body wellness.
+              </p>
+              <p className="about-copy">
+                Every appointment begins with listening. From weight management and injectables to IV therapy, skincare and massage, your care is shaped around your goals, comfort and natural sense of self.
+              </p>
+            </div>
+
+            <div className="about-details">
+              <div className="hours-card">
+                <div className="hours-heading">
+                  <span>Studio hours</span>
+                  <small>By appointment only</small>
+                </div>
+                <div className="hours-list">
+                  <div className="hours-row"><span>Mon–Fri</span><i aria-hidden="true" /><strong>9:30 AM–8 PM</strong></div>
+                  <div className="hours-row is-closed"><span>Sat–Sun</span><i aria-hidden="true" /><strong>Closed</strong></div>
+                </div>
+              </div>
+
+              <a className="visit-card" href="https://share.google/Bcqw7UswswmfnbVus" target="_blank" rel="noreferrer">
+                <span className="visit-label">Visit our studio</span>
+                <p>6101 Summitview Ave<br />Ste 120, Room #17 · Yakima, WA</p>
+                <span className="visit-action">Directions <ArrowIcon /></span>
+              </a>
+            </div>
+
+            <div className="platform-dock" aria-label="Find and follow HONGXU Wellness">
+              <div className="platform-intro">
+                <span>Find &amp; follow</span>
+                <small>HONGXU Wellness</small>
+              </div>
+              <a className="platform-link platform-google" href="https://share.google/Bcqw7UswswmfnbVus" target="_blank" rel="noreferrer" aria-label="Find HONGXU Wellness on Google Maps">
+                <span className="platform-icon"><img src="/icons/google.svg" alt="" /></span>
+                <span><strong>Google</strong><small>Directions</small></span>
+              </a>
+              <a className="platform-link" href="https://www.facebook.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="Follow HONGXU Wellness on Facebook">
+                <span className="platform-icon"><img src="/icons/facebook.svg" alt="" /></span>
+                <span><strong>Facebook</strong><small>Follow us</small></span>
+              </a>
+              <a className="platform-link" href="https://www.instagram.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="Follow HONGXU Wellness on Instagram">
+                <span className="platform-icon"><img src="/icons/instagram.svg" alt="" /></span>
+                <span><strong>Instagram</strong><small>@hongxuwellness</small></span>
               </a>
             </div>
           </div>
