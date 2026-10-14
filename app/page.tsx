@@ -213,24 +213,24 @@ function BeforeAfterPortrait() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const heroRef = useRef<HTMLElement>(null);
+  const siteRef = useRef<HTMLElement>(null);
 
   const moveLight = (event: PointerEvent<HTMLElement>) => {
-    if (!heroRef.current || window.matchMedia("(pointer: coarse)").matches) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const px = ((event.clientX - rect.left) / rect.width) * 100;
-    const py = ((event.clientY - rect.top) / rect.height) * 100;
+    if (!siteRef.current || window.matchMedia("(pointer: coarse)").matches) return;
+    const px = (event.clientX / window.innerWidth) * 100;
+    const py = (event.clientY / window.innerHeight) * 100;
     const mx = px / 50 - 1;
     const my = py / 50 - 1;
-    heroRef.current.style.setProperty("--pointer-x", `${px}%`);
-    heroRef.current.style.setProperty("--pointer-y", `${py}%`);
-    heroRef.current.style.setProperty("--move-x", `${mx}`);
-    heroRef.current.style.setProperty("--move-y", `${my}`);
+    siteRef.current.style.setProperty("--pointer-x", `${event.clientX}px`);
+    siteRef.current.style.setProperty("--pointer-y", `${event.clientY}px`);
+    siteRef.current.style.setProperty("--move-x", `${mx}`);
+    siteRef.current.style.setProperty("--move-y", `${my}`);
   };
 
   return (
-    <main className="min-h-svh overflow-hidden bg-[#06162f] text-[#fff8ed]">
-      <section ref={heroRef} onPointerMove={moveLight} className="hero-section" aria-labelledby="hero-title">
+    <main ref={siteRef} onPointerMove={moveLight} className="site-shell min-h-svh overflow-hidden bg-[#06162f] text-[#fff8ed]">
+      <div className="site-pointer-light" aria-hidden="true" />
+      <section className="hero-section" aria-labelledby="hero-title">
         <div className="cinematic-intro" aria-hidden="true">
           <div className="intro-panel intro-panel-left" />
           <div className="intro-panel intro-panel-right" />
@@ -242,7 +242,6 @@ export default function Home() {
         </div>
         <div className="hero-grain" aria-hidden="true" />
         <div className="hero-radial" aria-hidden="true" />
-        <div className="pointer-light" aria-hidden="true" />
         <p className="vertical-signature" aria-hidden="true">Hongxu Wellness · Yakima, Washington</p>
 
         <header className="hero-header">
