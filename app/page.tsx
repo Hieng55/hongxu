@@ -5,7 +5,7 @@ import { PointerEvent, useEffect, useRef, useState } from "react";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "About us", href: "/about" },
+  { label: "About us", href: "#about" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact us", href: "/contact" },
 ];
@@ -29,6 +29,16 @@ const treatmentInsights = [
     area: "Facial balance",
     description: "Thoughtful treatment planning focused on balance and proportion.",
   },
+];
+
+const openingHours = [
+  ["Monday", "9:30 AM–8 PM"],
+  ["Tuesday", "9:30 AM–8 PM"],
+  ["Wednesday", "9:30 AM–8 PM"],
+  ["Thursday", "9:30 AM–8 PM"],
+  ["Friday", "9:30 AM–8 PM"],
+  ["Saturday", "Closed"],
+  ["Sunday", "Closed"],
 ];
 
 function ArrowIcon() {
@@ -311,7 +321,7 @@ export default function Home() {
         </div>
 
         <div className="hero-footer">
-          <p>6101 Summitview Ave Ste 120 · Yakima, WA 98908</p>
+          <a className="footer-address" href="https://share.google/Bcqw7UswswmfnbVus" target="_blank" rel="noreferrer">6101 Summitview Ave Ste 120 · Yakima, WA 98908</a>
           <div className="footer-values">
             <span>Weight Loss</span><i />
             <span>IV Therapy</span><i />
@@ -324,6 +334,58 @@ export default function Home() {
             <a href="https://www.instagram.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="HONGXU Wellness on Instagram" className="social-link">
               <img src="/icons/instagram.svg" alt="" width="18" height="18" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="about-section" aria-labelledby="about-title">
+        <div className="about-ambient" aria-hidden="true" />
+        <div className="about-number" aria-hidden="true">02</div>
+
+        <div className="about-visual">
+          <div className="about-image-frame">
+            <img src="/images/about-treatment-room.png" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" />
+            <span className="about-image-line" aria-hidden="true" />
+          </div>
+          <div className="about-image-caption">
+            <span>Private care</span>
+            <i />
+            <span>Yakima, WA</span>
+          </div>
+        </div>
+
+        <div className="about-content">
+          <p className="section-kicker"><span /> About HONGXU</p>
+          <h2 id="about-title">A quieter kind of <em>wellness.</em></h2>
+          <p className="about-lead">
+            HONGXU Wellness is a private, appointment-only studio where modern aesthetics and whole-body care meet with intention.
+          </p>
+          <p className="about-copy">
+            From personalized weight management and injectables to IV therapy, skincare and massage, every visit is considered around your comfort, goals and natural sense of self.
+          </p>
+
+          <div className="about-details">
+            <div className="hours-card">
+              <div className="hours-heading">
+                <span>Studio hours</span>
+                <small>By appointment only</small>
+              </div>
+              <div className="hours-list">
+                {openingHours.map(([day, time]) => (
+                  <div className={`hours-row ${time === "Closed" ? "is-closed" : ""}`} key={day}>
+                    <span>{day}</span><i aria-hidden="true" /><strong>{time}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="visit-card">
+              <span className="visit-label">Visit us</span>
+              <p>6101 Summitview Ave<br />Ste 120, Room #17<br />Yakima, WA 98908</p>
+              <a href="https://share.google/Bcqw7UswswmfnbVus" target="_blank" rel="noreferrer">
+                Open in Google Maps <ArrowIcon />
+              </a>
+            </div>
           </div>
         </div>
       </section>
