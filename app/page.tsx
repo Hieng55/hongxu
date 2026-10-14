@@ -4,7 +4,7 @@ import { PointerEvent, useEffect, useRef, useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
+  { label: "Services", href: "#services" },
   { label: "About us", href: "#about" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact us", href: "/contact" },
@@ -29,6 +29,16 @@ const treatmentInsights = [
     area: "Facial balance",
     description: "Thoughtful treatment planning focused on balance and proportion.",
   },
+];
+
+const services = [
+  { title: "Weight Loss", detail: "Personalized, medically guided support shaped around your goals and lifestyle." },
+  { title: "Botox", detail: "Precise treatment planning for a refreshed look that still feels naturally you." },
+  { title: "Dermal Fillers", detail: "Thoughtful enhancement designed to restore balance, softness and proportion." },
+  { title: "IV Therapy", detail: "Hydration and nutrient support selected around how you want to feel." },
+  { title: "Injections", detail: "Wellness-focused injectable options offered in a discreet private setting." },
+  { title: "Skincare", detail: "Personalized facial care for tone, texture and healthy-looking radiance." },
+  { title: "Massage Therapy", detail: "Restorative bodywork created to release tension and help you reset." },
 ];
 
 function ArrowIcon() {
@@ -290,7 +300,7 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a href="/services" className="primary-button">
+              <a href="#services" className="primary-button">
                 Explore our services <ArrowIcon />
               </a>
               <a href="tel:+12066019801" className="text-link">
@@ -407,6 +417,42 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="services" className="services-section" aria-labelledby="services-title">
+        <div className="services-number" aria-hidden="true">03</div>
+        <div className="services-intro">
+          <p className="section-kicker"><span /> Our services</p>
+          <h2 id="services-title">Wellness, in <em>every detail.</em></h2>
+          <p>
+            A considered collection of aesthetic and wellness services, personalized for where you are and how you want to feel.
+          </p>
+          <a href="/contact" className="services-consultation">
+            Find your treatment <ArrowIcon />
+          </a>
+
+          <div className="services-emblem" aria-hidden="true">
+            <div className="services-orbit orbit-one"><i /><i /></div>
+            <div className="services-orbit orbit-two"><i /><i /></div>
+            <div className="services-monogram">
+              <img src="/images/hongxu-logo.png" alt="" width="730" height="728" />
+            </div>
+            <span>Seven paths.<br />One private destination.</span>
+          </div>
+        </div>
+
+        <div className="services-index">
+          {services.map((service, index) => (
+            <article className="service-row" key={service.title}>
+              <span className="service-index">{String(index + 1).padStart(2, "0")}</span>
+              <div className="service-name">
+                <h3>{service.title}</h3>
+                <p>{service.detail}</p>
+              </div>
+              <span className="service-arrow" aria-hidden="true"><ArrowIcon /></span>
+            </article>
+          ))}
         </div>
       </section>
     </main>
