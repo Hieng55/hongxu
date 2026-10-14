@@ -319,8 +319,8 @@ export default function Home() {
             <a href="https://www.facebook.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="HONGXU Wellness on Facebook" className="social-link">
               <img src="/icons/facebook.svg" alt="" width="18" height="18" />
             </a>
-            <a href="https://www.instagram.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="HONGXU Wellness on Instagram" className="social-link">
-              <img src="/icons/instagram.svg" alt="" width="18" height="18" />
+            <a href="https://www.instagram.com/hongxuwellness/" target="_blank" rel="noreferrer" aria-label="HONGXU Wellness on Instagram" className="social-link social-link-instagram">
+              <img src="/icons/instagram.svg" alt="" width="21" height="21" />
             </a>
           </div>
         </div>

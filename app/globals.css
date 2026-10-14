@@ -198,6 +198,8 @@ button, input { font: inherit; }
 .social-links { justify-self: end; display: flex; align-items: center; gap: 9px; }
 .social-link { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid rgba(240,208,144,.22); border-radius: 50%; background: rgba(255,255,255,.025); transition: border-color .3s,transform .3s,background .3s; }
 .social-link img { display: block; filter: none; opacity: 1; }
+.social-link-instagram { border-color: transparent; background: transparent; }
+.social-link-instagram:hover { background: transparent; }
 .social-link:hover { border-color: rgba(240,208,144,.68); background: rgba(255,255,255,.06); transform: translateY(-2px); }
 
 @keyframes fade-down { from { opacity: 0; transform: translateY(-16px); } }
