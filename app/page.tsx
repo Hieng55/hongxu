@@ -300,7 +300,9 @@ export default function Home() {
             </div>
 
             <div className="hero-proof">
-              <span className="proof-monogram">HW</span>
+              <span className="proof-logo-wrap">
+                <img src="/images/hongxu-logo.png" alt="HONGXU Wellness" className="proof-logo" width="730" height="728" />
+              </span>
               <p><strong>Your private wellness destination.</strong><br />By appointment only · Room #17</p>
             </div>
           </div>
