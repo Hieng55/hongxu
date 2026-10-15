@@ -3,11 +3,12 @@ deployment:
   tasks:
     - export APPPATH="$HOME/hongxu-app"
     - export DOCROOT="$HOME/public_html"
+    - /bin/rm -rf "$APPPATH"
     - /bin/mkdir -p "$APPPATH"
     - /bin/mkdir -p "$DOCROOT"
-    - /bin/cp -R ./.openai ./app ./build ./components ./lib ./public ./scripts "$APPPATH/"
-    - /bin/cp ./.npmrc ./cloudflare-env.d.ts ./eslint.config.mjs ./next.config.ts ./package.json ./package-lock.json ./tsconfig.json ./vite.config.ts "$APPPATH/"
-    - cd "$APPPATH" && /usr/bin/env npm ci
+    - /bin/cp -R ./app ./components ./lib ./public "$APPPATH/"
+    - /bin/cp ./.npmrc ./next.config.ts ./package.json ./package-lock.json ./tsconfig.json "$APPPATH/"
+    - cd "$APPPATH" && /usr/bin/env npm ci --omit=dev --no-audit --no-fund
     - cd "$APPPATH" && /usr/bin/env NEXT_PUBLIC_SITE_URL="https://hongxuwellness.com" npm run build:cpanel
     - if [ -f "$DOCROOT/.htaccess" ] && [ ! -f "$DOCROOT/.htaccess.wordpress-backup" ]; then /bin/cp "$DOCROOT/.htaccess" "$DOCROOT/.htaccess.wordpress-backup"; fi
     - /bin/cp -R "$APPPATH/out/." "$DOCROOT/"
