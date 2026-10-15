@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 
@@ -122,6 +122,18 @@ function ArrowIcon() {
 export default function ServicesClient() {
   const [activeId, setActiveId] = useState(serviceTabs[0].id);
   const activeService = serviceTabs.find((service) => service.id === activeId) ?? serviceTabs[0];
+
+  useEffect(() => {
+    const requestedService = decodeURIComponent(window.location.hash.slice(1));
+    const scrollFrame = window.requestAnimationFrame(() => {
+      if (serviceTabs.some((service) => service.id === requestedService)) {
+        setActiveId(requestedService);
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
+    return () => window.cancelAnimationFrame(scrollFrame);
+  }, []);
 
   return (
     <main id="top" className="wellness-tabs-page">

@@ -23,6 +23,7 @@ export default function PageTransition() {
   useEffect(() => {
     const handleNavigation = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (window.matchMedia("(min-width: 901px)").matches) return;
       const target = event.target as HTMLElement | null;
       const anchor = target?.closest("a");
       if (!anchor || anchor.target === "_blank" || anchor.hasAttribute("download") || anchor.hasAttribute("data-no-page-transition")) return;
