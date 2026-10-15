@@ -1,0 +1,34 @@
+{
+  "name": "HONGXU Wellness",
+  "short_name": "HONGXU",
+  "description": "Private aesthetics and whole-body wellness in Yakima, Washington.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#06162f",
+  "theme_color": "#06162f",
+  "lang": "en-US",
+  "categories": ["health", "wellness", "beauty"],
+  "icons": [
+    {
+      "src": "/images/hongxu-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View services",
+      "short_name": "Services",
+      "url": "/services"
+    },
+    {
+      "name": "Contact HONGXU",
+      "short_name": "Contact",
+      "url": "/contact"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://hongxuwellness.com
+Sitemap: https://hongxuwellness.com/sitemap.xml
