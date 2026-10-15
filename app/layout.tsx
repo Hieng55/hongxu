@@ -64,7 +64,11 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "HONGXU" },
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg", apple: "/images/hongxu-logo.png" },
+  icons: {
+    icon: [{ url: "/images/hongxu-logo-loading.png?v=2", type: "image/png" }],
+    shortcut: "/images/hongxu-logo-loading.png?v=2",
+    apple: "/images/hongxu-logo.png?v=2",
+  },
 };
 
 export const viewport: Viewport = {
