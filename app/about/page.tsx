@@ -1,0 +1,84 @@
+import type { Metadata } from "next";
+import SiteFooter from "@/components/site-footer";
+import SiteHeader from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "About Us | HONGXU Wellness",
+  description: "Discover the thoughtful, private, and personalized approach behind HONGXU Wellness in Yakima, Washington.",
+};
+
+function ArrowIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" /></svg>;
+}
+
+export default function AboutPage() {
+  return (
+    <main id="top" className="about-page about-page-single">
+      <SiteHeader active="about" />
+
+      <section id="about-story" className="about-section about-page-home-style" aria-labelledby="about-page-title">
+        <div className="about-ambient" aria-hidden="true" />
+        <div className="about-number" aria-hidden="true">About</div>
+
+        <div className="about-layout">
+          <div className="about-visual">
+            <div className="about-image-shell">
+              <div className="about-image-frame">
+                <img src="/images/about-treatment-room.png" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" />
+                <span className="about-image-line" aria-hidden="true" />
+              </div>
+              <div className="studio-plaque">
+                <span>Private studio</span>
+                <strong>Room #17 · Yakima</strong>
+              </div>
+            </div>
+            <div className="about-image-caption">
+              <span>A space to exhale</span><i /><span>Care that listens</span>
+            </div>
+          </div>
+
+          <div className="about-content">
+            <p className="section-kicker"><span /> Care built around what you need</p>
+            <h2 id="about-page-title">You don&apos;t need more options. <em>You need the right care.</em></h2>
+
+            <div className="about-story">
+              <p className="about-lead">Maybe you feel tired, less confident, or unsure which treatment is actually right for you.</p>
+              <p className="about-copy">At HONGXU Wellness, we simplify the next step. We listen first, understand what matters to you, and create a thoughtful plan that supports how you want to look and feel—without pressure or a one-size-fits-all approach.</p>
+            </div>
+
+            <div className="about-cta-row">
+              <a href="tel:+12066019801" className="about-consultation-button"><span>Start a conversation</span><ArrowIcon /></a>
+              <span className="about-cta-note">Private · Personal · By appointment</span>
+            </div>
+
+            <div className="about-details about-page-details">
+              <div className="hours-card about-pain-card">
+                <div className="hours-heading"><span>What you may be feeling</span><small>We understand</small></div>
+                <div className="hours-list">
+                  <div className="hours-row"><span>Overwhelmed</span><i aria-hidden="true" /><strong>Too many choices</strong></div>
+                  <div className="hours-row"><span>Unheard</span><i aria-hidden="true" /><strong>Rushed appointments</strong></div>
+                  <div className="hours-row"><span>Unsure</span><i aria-hidden="true" /><strong>Where to begin</strong></div>
+                </div>
+              </div>
+
+              <div className="visit-card about-answer-card">
+                <span className="visit-label">How we help</span>
+                <p>One private destination.<br />A plan shaped around you.<br />Care that feels natural.</p>
+                <span className="visit-action">Explore services <ArrowIcon /></span>
+              </div>
+            </div>
+
+            <div className="platform-dock about-promise-dock" aria-label="The HONGXU Wellness promise">
+              <div className="platform-intro"><span>Our promise</span><small>Your comfort comes first</small></div>
+              <div className="platform-link"><span className="about-promise-number">01</span><span><strong>Listen first</strong><small>Your goals guide us</small></span></div>
+              <div className="platform-link"><span className="about-promise-number">02</span><span><strong>Keep it personal</strong><small>Never one-size-fits-all</small></span></div>
+              <div className="platform-link"><span className="about-promise-number">03</span><span><strong>Stay thoughtful</strong><small>Natural, balanced care</small></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </main>
+  );
+}
