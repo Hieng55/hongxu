@@ -3,7 +3,7 @@ deployment:
   tasks:
     - export APPPATH="$HOME/hongxu-app"
     - /bin/mkdir -p "$APPPATH"
-    - /bin/cp -R ./app ./build ./components ./db ./drizzle ./hooks ./image ./lib ./public ./scripts ./vendor "$APPPATH/"
-    - /bin/cp ./.npmrc ./cloudflare-env.d.ts ./components.json ./drizzle.config.ts ./eslint.config.mjs ./next.config.ts ./package.json ./package-lock.json ./postcss.config.mjs ./tsconfig.json ./vite.config.ts "$APPPATH/"
+    - /bin/cp -R ./.openai ./app ./build ./components ./lib ./public ./scripts "$APPPATH/"
+    - /bin/cp ./.npmrc ./cloudflare-env.d.ts ./eslint.config.mjs ./next.config.ts ./package.json ./package-lock.json ./tsconfig.json ./vite.config.ts "$APPPATH/"
     - cd "$APPPATH" && /usr/bin/env npm ci
     - cd "$APPPATH" && /usr/bin/env npm run build

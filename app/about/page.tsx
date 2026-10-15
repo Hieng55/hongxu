@@ -41,7 +41,7 @@ export default function AboutPage() {
           <div className="about-visual">
             <div className="about-image-shell">
               <div className="about-image-frame">
-                <img src="/images/about-treatment-room.png" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" />
+                <img src="/images/about-treatment-room.jpg" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" decoding="async" />
                 <span className="about-image-line" aria-hidden="true" />
               </div>
               <div className="studio-plaque">

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import FullscreenMenu from "@/components/fullscreen-menu";
 
@@ -29,12 +30,12 @@ export default function SiteHeader({ active }: { active: string }) {
   return (
     <div className="site-header-space">
       <header className={`site-header${isFixed ? " is-fixed" : ""}`}>
-        <a className="site-header-brand" href="/" aria-label="HONGXU Wellness home">
+        <Link className="site-header-brand" href="/" aria-label="HONGXU Wellness home">
           <img src="/images/hongxu-logo.png" alt="HONGXU Wellness" width="730" height="728" />
-        </a>
+        </Link>
 
         <nav className="site-header-nav" aria-label="Primary navigation">
-          {links.map((link) => <a className={link.id === active ? "is-active" : ""} href={link.href} key={link.id}>{link.label}</a>)}
+          {links.map((link) => <Link className={link.id === active ? "is-active" : ""} href={link.href} key={link.id}>{link.label}</Link>)}
         </nav>
 
         <a className="site-header-book" href="tel:+12066019801">Book an appointment <ArrowIcon /></a>

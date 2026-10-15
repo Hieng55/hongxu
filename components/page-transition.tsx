@@ -12,8 +12,8 @@ export default function PageTransition() {
   const [origin, setOrigin] = useState({ x: 0, y: 0 });
   const phaseRef = useRef<Phase>("idle");
   const pendingPath = useRef<string | null>(null);
-  const navigationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const finishTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navigationTimer = useRef<number | null>(null);
+  const finishTimer = useRef<number | null>(null);
 
   const updatePhase = (next: Phase) => {
     phaseRef.current = next;

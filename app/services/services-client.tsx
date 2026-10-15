@@ -4,7 +4,26 @@ import { useState } from "react";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 
-const serviceTabs = [
+type ServiceItem = {
+  name: string;
+  price: string;
+  unit?: string;
+  ingredients?: string;
+  detail?: string;
+};
+
+type ServiceTab = {
+  id: string;
+  label: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+  note?: string;
+  items: ServiceItem[];
+};
+
+const serviceTabs: ServiceTab[] = [
   {
     id: "weight-loss",
     label: "Weight Loss",
@@ -58,7 +77,7 @@ const serviceTabs = [
     eyebrow: "À la carte wellness",
     title: "Wellness Injections",
     description: "Simple, focused options selected with your individual wellness needs in mind.",
-    image: "/images/services/injections.jpg",
+    image: "/images/services/injections.webp",
     items: [
       { name: "Vitamin D", price: "$25" },
       { name: "Vitamin B12", price: "$25" },
@@ -143,7 +162,7 @@ export default function ServicesClient() {
             key={activeService.id}
           >
             <div className="wm-tab-image">
-              <img src={activeService.image} alt={`${activeService.title} at HONGXU Wellness`} width="1122" height="1402" />
+              <img src={activeService.image} alt={`${activeService.title} at HONGXU Wellness`} width="1122" height="1402" decoding="async" />
               <span>Private care · By appointment</span>
             </div>
 

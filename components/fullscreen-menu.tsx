@@ -17,12 +17,15 @@ const links = [
 export default function FullscreenMenu({ open, active, onClose }: { open: boolean; active: string; onClose: () => void }) {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
-  const navigationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => setMounted(true), []);
+  const navigationTimer = useRef<number | null>(null);
 
   useEffect(() => {
-    let unlockTimer: ReturnType<typeof setTimeout> | null = null;
+    const mountFrame = window.requestAnimationFrame(() => setMounted(true));
+    return () => window.cancelAnimationFrame(mountFrame);
+  }, []);
+
+  useEffect(() => {
+    let unlockTimer: number | null = null;
     if (open) {
       document.documentElement.classList.add("is-menu-open");
     } else {

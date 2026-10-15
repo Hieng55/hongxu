@@ -5,7 +5,7 @@ export const DEFAULT_DESCRIPTION =
   "Private wellness and aesthetics studio in Yakima offering personalized weight management, Botox, dermal fillers, IV therapy, skincare, massage, and wellness injections.";
 
 export const SOCIAL_IMAGE = {
-  url: "/images/about-treatment-room.png",
+  url: "/images/about-treatment-room.jpg",
   width: 1086,
   height: 1448,
   alt: "Private treatment room at HONGXU Wellness in Yakima, Washington",

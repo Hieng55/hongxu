@@ -1,6 +1,7 @@
 "use client";
 
 import { PointerEvent, useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import SiteFooter from "@/components/site-footer";
 import FullscreenMenu from "@/components/fullscreen-menu";
 
@@ -38,7 +39,7 @@ const services = [
   { title: "Botox", image: "/images/services/botox.webp", detail: "Precise treatment planning for a refreshed look that still feels naturally you." },
   { title: "Dermal Fillers", image: "/images/services/dermal-fillers.webp", detail: "Thoughtful enhancement designed to restore balance, softness and proportion." },
   { title: "IV Therapy", image: "/images/services/iv-therapy.webp", detail: "Hydration and nutrient support selected around how you want to feel." },
-  { title: "Injections", image: "/images/services/injections.jpg", detail: "Wellness-focused injectable options offered in a discreet private setting." },
+  { title: "Injections", image: "/images/services/injections.webp", detail: "Wellness-focused injectable options offered in a discreet private setting." },
   { title: "Skincare", image: "/images/services/skincare.webp", detail: "Personalized facial care for tone, texture and healthy-looking radiance." },
   { title: "Massage Therapy", image: "/images/services/massage-therapy.webp", detail: "Restorative bodywork created to release tension and help you reset." },
 ];
@@ -117,7 +118,7 @@ const sampleReviews = [
 
 function ArrowIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="arrow-icon">
       <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
     </svg>
   );
@@ -235,6 +236,8 @@ function GalleryComparison({ item, index }: { item: (typeof galleryCases)[number
           alt={`Before ${item.title} treatment`}
           width="1600"
           height="1600"
+          loading="lazy"
+          decoding="async"
           draggable="false"
         />
         <div className="gallery-after-layer" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
@@ -244,6 +247,8 @@ function GalleryComparison({ item, index }: { item: (typeof galleryCases)[number
             alt={`After ${item.title} treatment`}
             width="1600"
             height="1600"
+            loading="lazy"
+            decoding="async"
             draggable="false"
           />
         </div>
@@ -284,9 +289,11 @@ function BeforeAfterPortrait() {
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) {
-      setPosition(56);
-      setIsScanning(false);
-      return;
+      const settleFrame = window.requestAnimationFrame(() => {
+        setPosition(56);
+        setIsScanning(false);
+      });
+      return () => window.cancelAnimationFrame(settleFrame);
     }
 
     let frame = 0;
@@ -338,11 +345,13 @@ function BeforeAfterPortrait() {
         <div className="portrait-glow" aria-hidden="true" />
         <div className="portrait-crop">
           <img
-            src="/image/gallery/before.png"
+            src="/image/gallery/before.webp"
             alt="Before treatment portrait showing natural skin texture"
             className="portrait-image"
             width="760"
             height="760"
+            loading="lazy"
+            decoding="async"
             draggable="false"
           />
           <div
@@ -350,11 +359,13 @@ function BeforeAfterPortrait() {
             style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
           >
             <img
-              src="/image/gallery/after.png"
+              src="/image/gallery/after.webp"
               alt="After treatment portrait showing a refreshed appearance"
               className="portrait-image"
               width="760"
               height="760"
+              loading="lazy"
+              decoding="async"
               draggable="false"
             />
           </div>
@@ -455,8 +466,8 @@ export default function Home() {
     const mobileViewport = window.matchMedia("(max-width: 700px)").matches;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (mobileViewport || reduceMotion) {
-      setIntroVisible(false);
-      return;
+      const hideFrame = window.requestAnimationFrame(() => setIntroVisible(false));
+      return () => window.cancelAnimationFrame(hideFrame);
     }
 
     const root = document.documentElement;
@@ -489,7 +500,7 @@ export default function Home() {
   };
 
   return (
-    <main id="top" ref={siteRef} onPointerMove={moveLight} className="site-shell min-h-svh overflow-hidden bg-[#06162f] text-[#fff8ed]">
+    <main id="top" ref={siteRef} onPointerMove={moveLight} className="site-shell">
       <div className="site-pointer-light" aria-hidden="true" />
       {introVisible && (
         <div className={`cinematic-intro${introPlaying ? " is-playing" : ""}`} aria-hidden="true">
@@ -515,15 +526,15 @@ export default function Home() {
         <p className="vertical-signature" aria-hidden="true">Hongxu Wellness · Yakima, Washington</p>
 
         <header className="hero-header">
-          <a href="/" className="brand" aria-label="Hongxu Wellness home">
+          <Link href="/" className="brand" aria-label="Hongxu Wellness home">
             <img className="brand-logo" src="/images/hongxu-logo.png" alt="Hongxu Wellness" width="730" height="728" />
-          </a>
+          </Link>
 
           <nav className="desktop-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
-              <a key={item.label} href={item.href} className={item.label === "Home" ? "active" : ""}>
+              <Link key={item.label} href={item.href} className={item.label === "Home" ? "active" : ""}>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -604,7 +615,7 @@ export default function Home() {
           <div className="about-visual">
             <div className="about-image-shell">
               <div className="about-image-frame">
-                <img src="/images/about-treatment-room.png" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" />
+                <img src="/images/about-treatment-room.jpg" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" loading="lazy" decoding="async" />
                 <span className="about-image-line" aria-hidden="true" />
               </div>
               <div className="studio-plaque">
@@ -694,8 +705,8 @@ export default function Home() {
 
         <div className="services-grid">
           {services.map((service, index) => (
-            <a className={`service-card service-card-${index + 1}`} href={`/services#${service.title.toLowerCase().replace(/ /g, "-")}`} key={service.title}>
-              <img src={service.image} alt={`${service.title} service at HONGXU Wellness`} width="1122" height="1402" loading="lazy" />
+            <Link className={`service-card service-card-${index + 1}`} href={`/services#${service.title.toLowerCase().replace(/ /g, "-")}`} key={service.title}>
+              <img src={service.image} alt={`${service.title} service at HONGXU Wellness`} width="1122" height="1402" loading="lazy" decoding="async" />
               <div className="service-card-shade" aria-hidden="true" />
               <span className="service-card-index">{String(index + 1).padStart(2, "0")}</span>
               <div className="service-card-content">
@@ -705,7 +716,7 @@ export default function Home() {
                 </div>
                 <span className="service-card-arrow" aria-hidden="true"><ArrowIcon /></span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

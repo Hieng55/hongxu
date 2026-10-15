@@ -18,9 +18,9 @@ function Comparison({ item, index }: { item: (typeof galleryCases)[number]; inde
   return (
     <article className="gallery-result-card">
       <div className="gallery-comparison">
-        <img className="gallery-comparison-image" src={item.before} alt={`Before ${item.title} treatment`} width="1600" height="1600" draggable="false" />
+        <img className="gallery-comparison-image" src={item.before} alt={`Before ${item.title} treatment`} width="1400" height="1400" loading="lazy" decoding="async" draggable="false" />
         <div className="gallery-after-layer" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
-          <img className="gallery-comparison-image" src={item.after} alt={`After ${item.title} treatment`} width="1600" height="1600" draggable="false" />
+          <img className="gallery-comparison-image" src={item.after} alt={`After ${item.title} treatment`} width="1400" height="1400" loading="lazy" decoding="async" draggable="false" />
         </div>
         <span className="gallery-image-label gallery-label-before">Before</span><span className="gallery-image-label gallery-label-after">After</span>
         <div className="gallery-divider" style={{ left: `${position}%` }} aria-hidden="true"><span><i>‹</i><i>›</i></span></div>
