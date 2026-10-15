@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
+import { SOCIAL_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact Us | HONGXU Wellness",
-  description: "Contact HONGXU Wellness or plan your private visit in Yakima, Washington.",
+  title: "Contact & Book an Appointment",
+  description: "Contact HONGXU Wellness at 206-601-9801 or visit our private studio at 6101 Summitview Ave, Suite 120, Room 17 in Yakima, WA.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "HONGXU Wellness",
+    url: "/contact",
+    title: "Contact HONGXU Wellness in Yakima",
+    description: "Call, get directions, or plan your private appointment at HONGXU Wellness.",
+    images: [SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact HONGXU Wellness in Yakima",
+    description: "Call, get directions, or plan your private appointment at HONGXU Wellness.",
+    images: [SOCIAL_IMAGE.url],
+  },
 };
 
 function ArrowIcon() {

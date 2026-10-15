@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
+import { SOCIAL_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About Us | HONGXU Wellness",
-  description: "Discover the thoughtful, private, and personalized approach behind HONGXU Wellness in Yakima, Washington.",
+  title: "About Our Private Wellness Studio",
+  description: "Meet HONGXU Wellness, a private Yakima studio offering thoughtful, personalized aesthetics and whole-body wellness care.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "HONGXU Wellness",
+    url: "/about",
+    title: "About HONGXU Wellness in Yakima",
+    description: "Private, personalized aesthetics and wellness care shaped around your comfort and goals.",
+    images: [SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About HONGXU Wellness in Yakima",
+    description: "Private, personalized aesthetics and wellness care shaped around your comfort and goals.",
+    images: [SOCIAL_IMAGE.url],
+  },
 };
 
 function ArrowIcon() {
