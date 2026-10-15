@@ -226,10 +226,41 @@ function ReviewsCarousel() {
 
 function GalleryComparison({ item, index }: { item: (typeof galleryCases)[number]; index: number }) {
   const [position, setPosition] = useState(50);
+  const activePointer = useRef<number | null>(null);
+
+  const updatePositionFromPointer = (event: PointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const nextPosition = ((event.clientX - bounds.left) / bounds.width) * 100;
+    setPosition(Math.min(98, Math.max(2, nextPosition)));
+  };
+
+  const startDragging = (event: PointerEvent<HTMLDivElement>) => {
+    activePointer.current = event.pointerId;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    updatePositionFromPointer(event);
+  };
+
+  const continueDragging = (event: PointerEvent<HTMLDivElement>) => {
+    if (activePointer.current === event.pointerId) updatePositionFromPointer(event);
+  };
+
+  const stopDragging = (event: PointerEvent<HTMLDivElement>) => {
+    if (activePointer.current !== event.pointerId) return;
+    activePointer.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  };
 
   return (
     <article className="gallery-result-card">
-      <div className="gallery-comparison">
+      <div
+        className="gallery-comparison"
+        onPointerDown={startDragging}
+        onPointerMove={continueDragging}
+        onPointerUp={stopDragging}
+        onPointerCancel={stopDragging}
+      >
         <img
           className="gallery-comparison-image"
           src={item.before}
@@ -282,6 +313,8 @@ function BeforeAfterPortrait() {
   const [position, setPosition] = useState(6);
   const [isScanning, setIsScanning] = useState(true);
   const [activeInsight, setActiveInsight] = useState<string | null>(null);
+  const activePointer = useRef<number | null>(null);
+  const scanAnimationFrame = useRef<number | null>(null);
   const selectedTreatment = activeInsight
     ? treatmentInsights.find((item) => item.id === activeInsight) ?? null
     : null;
@@ -296,7 +329,6 @@ function BeforeAfterPortrait() {
       return () => window.cancelAnimationFrame(settleFrame);
     }
 
-    let frame = 0;
     const started = performance.now() + 1850;
     const duration = 3100;
     const animate = (now: number) => {
@@ -312,16 +344,51 @@ function BeforeAfterPortrait() {
         next = 78 - 22 * eased;
       }
       setPosition(next);
-      if (t < 1) frame = requestAnimationFrame(animate);
-      else setIsScanning(false);
+      if (t < 1) scanAnimationFrame.current = requestAnimationFrame(animate);
+      else {
+        scanAnimationFrame.current = null;
+        setIsScanning(false);
+      }
     };
-    frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
+    scanAnimationFrame.current = requestAnimationFrame(animate);
+    return () => {
+      if (scanAnimationFrame.current !== null) cancelAnimationFrame(scanAnimationFrame.current);
+      scanAnimationFrame.current = null;
+    };
   }, []);
 
   const handlePosition = (value: number) => {
+    if (scanAnimationFrame.current !== null) {
+      cancelAnimationFrame(scanAnimationFrame.current);
+      scanAnimationFrame.current = null;
+    }
     setIsScanning(false);
     setPosition(value);
+  };
+
+  const updatePositionFromPointer = (event: PointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const nextPosition = ((event.clientX - bounds.left) / bounds.width) * 100;
+    handlePosition(Math.min(98, Math.max(2, nextPosition)));
+  };
+
+  const startDragging = (event: PointerEvent<HTMLDivElement>) => {
+    if ((event.target as Element).closest("button")) return;
+    activePointer.current = event.pointerId;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    updatePositionFromPointer(event);
+  };
+
+  const continueDragging = (event: PointerEvent<HTMLDivElement>) => {
+    if (activePointer.current === event.pointerId) updatePositionFromPointer(event);
+  };
+
+  const stopDragging = (event: PointerEvent<HTMLDivElement>) => {
+    if (activePointer.current !== event.pointerId) return;
+    activePointer.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
   };
 
   return (
@@ -343,7 +410,13 @@ function BeforeAfterPortrait() {
       </svg>
       <div className="portrait-frame">
         <div className="portrait-glow" aria-hidden="true" />
-        <div className="portrait-crop">
+        <div
+          className="portrait-crop"
+          onPointerDown={startDragging}
+          onPointerMove={continueDragging}
+          onPointerUp={stopDragging}
+          onPointerCancel={stopDragging}
+        >
           <img
             src="/image/gallery/before.webp"
             alt="Before treatment portrait showing natural skin texture"

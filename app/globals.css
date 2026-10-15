@@ -173,7 +173,7 @@ button, input { font: inherit; }
 .silk-ribbon { position: absolute; z-index: -1; width: min(58vw,820px); left: 50%; bottom: -2%; translate: -47% 0; overflow: visible; pointer-events: none; filter: drop-shadow(0 0 11px rgba(240,208,144,.12)); animation: silk-breathe 8s ease-in-out infinite; }
 .portrait-frame { position: relative; width: min(38vw, 550px); margin-bottom: -1px; transform: translate3d(calc(var(--move-x) * 7px),calc(var(--move-y) * 5px),0); transition: transform .35s cubic-bezier(.2,.75,.2,1); }
 .portrait-glow { position: absolute; z-index: -1; inset: 7% -14% 0; background: radial-gradient(ellipse, rgba(240,208,144,.16), rgba(13,49,76,.2) 45%, transparent 70%); filter: blur(22px); }
-.portrait-crop { position: relative; aspect-ratio: 1 / 1.03; overflow: hidden; border-radius: 48% 48% 3px 3px; border: 1px solid rgba(240,208,144,.26); background: linear-gradient(180deg, #142b45, #071831); box-shadow: 0 38px 100px rgba(0,0,0,.36); }
+.portrait-crop { position: relative; aspect-ratio: 1 / 1.03; overflow: hidden; border-radius: 48% 48% 3px 3px; border: 1px solid rgba(240,208,144,.26); background: linear-gradient(180deg, #142b45, #071831); box-shadow: 0 38px 100px rgba(0,0,0,.36); cursor: ew-resize; touch-action: pan-y; }
 .portrait-crop::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 8; box-shadow: inset 0 -80px 80px rgba(6,22,47,.34), inset 0 0 90px rgba(6,22,47,.14); }
 .portrait-image { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: center top; user-select: none; }
 .after-layer { position: absolute; z-index: 2; inset: 0; will-change: clip-path; }
@@ -184,7 +184,7 @@ button, input { font: inherit; }
 .scan-beam { position: absolute; top: 0; bottom: 0; right: -26px; width: 52px; background: linear-gradient(90deg, transparent, rgba(255,238,190,.13), transparent); }
 .scan-handle { position: absolute; left: 50%; top: 54%; translate: -50% -50%; display: flex; align-items: center; justify-content: center; gap: 4px; width: 42px; height: 42px; border: 1px solid rgba(240,208,144,.75); border-radius: 50%; color: var(--gold); background: rgba(6,22,47,.76); backdrop-filter: blur(8px); box-shadow: 0 8px 28px rgba(0,0,0,.24); }
 .scan-handle i { font-family: var(--font-forum), serif; font-size: 18px; font-style: normal; }
-.comparison-range { position: absolute; z-index: 15; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+.comparison-range { position: absolute; z-index: 15; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; background: transparent; pointer-events: none; user-select: none; -webkit-appearance: none; appearance: none; }
 .comparison-range:focus-visible + * { outline: 1px solid var(--gold); }
 .face-insights { position: absolute; z-index: 18; inset: 0; pointer-events: none; }
 .face-marker { position: absolute; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: 0; color: rgba(255,248,237,.76); background: transparent; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; opacity: 0; transform: translateY(8px); pointer-events: auto; cursor: pointer; text-align: left; }
@@ -340,7 +340,7 @@ button, input { font: inherit; }
 .gallery-heading > p:last-child { max-width: 470px; margin: 0 0 5px; color: rgba(255,248,237,.58); font-size: 13px; line-height: 1.8; }
 .gallery-results-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; max-width: 1320px; margin: 0 auto; }
 .gallery-result-card { min-width: 0; }
-.gallery-comparison { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid rgba(240,208,144,.2); border-radius: 28px 28px 100px 28px; background: linear-gradient(180deg,#142b45,#071831); box-shadow: 0 32px 80px rgba(0,0,0,.24); user-select: none; }
+.gallery-comparison { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid rgba(240,208,144,.2); border-radius: 28px 28px 100px 28px; background: linear-gradient(180deg,#142b45,#071831); box-shadow: 0 32px 80px rgba(0,0,0,.24); cursor: ew-resize; touch-action: pan-y; user-select: none; }
 .gallery-comparison-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; pointer-events: none; }
 .gallery-after-layer { position: absolute; inset: 0; overflow: hidden; will-change: clip-path; }
 .gallery-image-label { position: absolute; z-index: 3; top: 22px; padding: 9px 13px; border: 1px solid rgba(255,255,255,.4); border-radius: 20px; color: #fff8ed; background: rgba(7,23,45,.46); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; backdrop-filter: blur(10px); }
@@ -349,7 +349,7 @@ button, input { font: inherit; }
 .gallery-divider { position: absolute; z-index: 4; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,.9); box-shadow: 0 0 22px rgba(255,255,255,.65); pointer-events: none; }
 .gallery-divider > span { position: absolute; top: 50%; left: 50%; display: flex; width: 52px; height: 52px; align-items: center; justify-content: center; gap: 6px; border: 1px solid rgba(240,208,144,.7); border-radius: 50%; color: var(--gold); background: rgba(6,22,47,.9); box-shadow: 0 8px 24px rgba(0,0,0,.24); transform: translate(-50%,-50%); }
 .gallery-divider i { font-family: serif; font-size: 24px; font-style: normal; line-height: 1; }
-.gallery-range { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.gallery-range { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; background: transparent; pointer-events: none; user-select: none; -webkit-appearance: none; appearance: none; }
 .gallery-range:focus-visible { opacity: 1; outline: 2px solid var(--gold); outline-offset: -4px; }
 .gallery-service-note { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; padding: 20px 8px 0; }
 .gallery-service-note > span { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(240,208,144,.28); border-radius: 50%; color: var(--gold); font-family: var(--font-forum),serif; font-size: 15px; }
@@ -654,6 +654,8 @@ button, input { font: inherit; }
   .portrait-composition { width: 100%; min-height: 0; margin-top: 26px; }
   .portrait-frame { width: min(92vw, 470px); }
   .portrait-crop { aspect-ratio: 1 / 1.05; border-radius: 46% 46% 2px 2px; }
+  .scan-divider,.comparison-range { z-index: 20; }
+  .face-marker { pointer-events: none; }
   .organic-aura { width: 112vw; bottom: -6%; }
   .silk-ribbon { width: 112vw; }
   .callout-card { width: 160px; min-height: 0; padding: 13px 14px; }
