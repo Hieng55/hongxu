@@ -8,6 +8,7 @@ deployment:
     - /bin/mkdir -p "$DOCROOT"
     - /bin/cp -R ./app ./components ./lib ./public "$APPPATH/"
     - /bin/cp ./.npmrc ./next.config.ts ./package.json ./package-lock.json ./tsconfig.json "$APPPATH/"
+    - export PATH="/opt/alt/alt-nodejs22/root/usr/bin:$PATH"
     - cd "$APPPATH" && /usr/bin/env npm ci --omit=dev --no-audit --no-fund
     - cd "$APPPATH" && /usr/bin/env NEXT_PUBLIC_SITE_URL="https://hongxuwellness.com" npm run build:cpanel
     - if [ -f "$DOCROOT/.htaccess" ] && [ ! -f "$DOCROOT/.htaccess.wordpress-backup" ]; then /bin/cp "$DOCROOT/.htaccess" "$DOCROOT/.htaccess.wordpress-backup"; fi
