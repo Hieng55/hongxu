@@ -1,4 +1,4 @@
-const CACHE_NAME = "hongxu-wellness-v2";
+const CACHE_NAME = "hongxu-wellness-v3";
 const APP_SHELL = ["/", "/manifest.webmanifest", "/favicon.svg", "/images/hongxu-logo.png"];
 
 self.addEventListener("install", (event) => {
