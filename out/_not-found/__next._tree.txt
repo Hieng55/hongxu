@@ -1,4 +1,4 @@
 :HL["/_next/static/chunks/1d1573af3lg81.css","style"]
-:HL["/_next/static/chunks/3hm9-euchasth.css","style"]
+:HL["/_next/static/chunks/0g-2xiuyqxrzn.css","style"]
 :HL["/images/hongxu-logo-loading.png","image",{"fetchPriority":"high"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"_vqgZFq05367y5Xg2abfl"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"q7mrFi89z1g4uQcqutxbb"}
