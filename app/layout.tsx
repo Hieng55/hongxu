@@ -6,6 +6,7 @@ import PwaRegister from "@/components/pwa-register";
 import PageTransition from "@/components/page-transition";
 import { BUSINESS_NAME, DEFAULT_DESCRIPTION, SITE_URL, SOCIAL_IMAGE, localBusinessSchema } from "@/lib/seo";
 import "./globals.css";
+import "./theme.css";
 
 const jost = Jost({
   variable: "--font-jost",
@@ -75,7 +76,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#06162f",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

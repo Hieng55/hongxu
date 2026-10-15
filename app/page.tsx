@@ -399,10 +399,10 @@ function BeforeAfterPortrait() {
       <svg className="silk-ribbon" viewBox="0 0 820 720" fill="none" aria-hidden="true">
         <defs>
           <linearGradient id="ribbonGold" x1="70" y1="570" x2="730" y2="100" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#f0d090" stopOpacity="0" />
-            <stop offset=".43" stopColor="#f0d090" stopOpacity=".5" />
+            <stop stopColor="#ffffff" stopOpacity="0" />
+            <stop offset=".43" stopColor="#ffffff" stopOpacity=".5" />
             <stop offset=".7" stopColor="#fff0c6" stopOpacity=".22" />
-            <stop offset="1" stopColor="#f0d090" stopOpacity="0" />
+            <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
           </linearGradient>
         </defs>
         <path d="M42 596C182 521 170 272 348 183C487 113 648 172 783 55" stroke="url(#ribbonGold)" strokeWidth="1.2" />
@@ -533,7 +533,6 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [introPlaying, setIntroPlaying] = useState(false);
   const [introVisible, setIntroVisible] = useState(true);
-  const siteRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const mobileViewport = window.matchMedia("(max-width: 700px)").matches;
@@ -560,21 +559,8 @@ export default function Home() {
     };
   }, []);
 
-  const moveLight = (event: PointerEvent<HTMLElement>) => {
-    if (!siteRef.current || window.matchMedia("(pointer: coarse)").matches) return;
-    const px = (event.clientX / window.innerWidth) * 100;
-    const py = (event.clientY / window.innerHeight) * 100;
-    const mx = px / 50 - 1;
-    const my = py / 50 - 1;
-    siteRef.current.style.setProperty("--pointer-x", `${event.clientX}px`);
-    siteRef.current.style.setProperty("--pointer-y", `${event.clientY}px`);
-    siteRef.current.style.setProperty("--move-x", `${mx}`);
-    siteRef.current.style.setProperty("--move-y", `${my}`);
-  };
-
   return (
-    <main id="top" ref={siteRef} onPointerMove={moveLight} className="site-shell">
-      <div className="site-pointer-light" aria-hidden="true" />
+    <main id="top" className="site-shell">
       {introVisible && (
         <div className={`cinematic-intro${introPlaying ? " is-playing" : ""}`} aria-hidden="true">
           <div className="intro-panel intro-panel-left" />
@@ -630,7 +616,11 @@ export default function Home() {
 
         <div className="hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow"><span /> HONGXU Wellness · Yakima, Washington</p>
+            <p className="eyebrow">
+              <span aria-hidden="true" />
+              HONGXU Wellness · Yakima, Washington
+              <span aria-hidden="true" />
+            </p>
             <h1 id="hero-title">
               <span>Wellness,</span>
               <em>beautifully yours.</em>
