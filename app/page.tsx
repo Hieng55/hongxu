@@ -531,54 +531,9 @@ function BeforeAfterPortrait() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [introPlaying, setIntroPlaying] = useState(false);
-  const [introVisible, setIntroVisible] = useState(true);
-
-  useEffect(() => {
-    const mobileViewport = window.matchMedia("(max-width: 700px)").matches;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (mobileViewport || reduceMotion) {
-      const hideFrame = window.requestAnimationFrame(() => setIntroVisible(false));
-      return () => window.cancelAnimationFrame(hideFrame);
-    }
-
-    const root = document.documentElement;
-    root.classList.add("is-intro-loading");
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    const startFrame = window.requestAnimationFrame(() => setIntroPlaying(true));
-
-    const unlockTimer = window.setTimeout(() => {
-      root.classList.remove("is-intro-loading");
-      setIntroVisible(false);
-    }, 3000);
-
-    return () => {
-      window.cancelAnimationFrame(startFrame);
-      window.clearTimeout(unlockTimer);
-      root.classList.remove("is-intro-loading");
-    };
-  }, []);
 
   return (
     <main id="top" className="site-shell">
-      {introVisible && (
-        <div className={`cinematic-intro${introPlaying ? " is-playing" : ""}`} aria-hidden="true">
-          <div className="intro-panel intro-panel-left" />
-          <div className="intro-panel intro-panel-right" />
-          <div className="intro-atmosphere" />
-          <p className="intro-watermark">HONGXU</p>
-          <div className="intro-signature">
-            <div className="intro-mark">
-              <span className="intro-mark-ring" />
-              <span className="loading-logo-fallback" aria-hidden="true">HW</span>
-              <img src="/images/hongxu-logo-loading.png" alt="" width="128" height="129" fetchPriority="high" decoding="sync" />
-            </div>
-            <p className="intro-brand-name">HONGXU <b>Wellness</b></p>
-            <div className="intro-progress"><i /></div>
-            <small>Wellness, beautifully yours.</small>
-          </div>
-        </div>
-      )}
       <section className="hero-section" aria-labelledby="hero-title">
         <div className="hero-grain" aria-hidden="true" />
         <div className="hero-radial" aria-hidden="true" />

@@ -11,8 +11,6 @@
 
 * { box-sizing: border-box; }
 html { max-width:100%; overflow-x:clip; background: var(--navy); scroll-behavior:smooth; }
-html.is-intro-loading,
-html.is-intro-loading body { overflow:hidden; overscroll-behavior:none; }
 html.is-menu-open,
 html.is-menu-open body,
 html.is-page-transitioning,

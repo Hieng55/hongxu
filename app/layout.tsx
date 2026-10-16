@@ -82,9 +82,6 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preload" as="image" href="/images/hongxu-logo-loading.png" fetchPriority="high" />
-      </head>
       <body className={`${jost.variable} ${forum.variable}`}>
         <script
           type="application/ld+json"
