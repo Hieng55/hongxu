@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AboutStudioSlider from "@/components/about-studio-slider";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import { SOCIAL_IMAGE } from "@/lib/seo";
@@ -39,16 +40,7 @@ export default function AboutPage() {
 
         <div className="about-layout">
           <div className="about-visual">
-            <div className="about-image-shell">
-              <div className="about-image-frame">
-                <img src="/images/about-treatment-room.jpg" alt="Warm and private HONGXU Wellness treatment room in Yakima" width="1086" height="1448" decoding="async" />
-                <span className="about-image-line" aria-hidden="true" />
-              </div>
-              <div className="studio-plaque">
-                <span>Private studio</span>
-                <strong>Room #17 · Yakima</strong>
-              </div>
-            </div>
+            <AboutStudioSlider />
             <div className="about-image-caption">
               <span>A space to exhale</span><i /><span>Care that listens</span>
             </div>

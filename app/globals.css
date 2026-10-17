@@ -1471,3 +1471,70 @@ button, input { font: inherit; }
   .cinematic-intro { display: none; }
   .face-marker { opacity: 1; transform: none; }
 }
+
+/* About page: auto-playing studio carousel */
+.about-slider-frame { isolation:isolate; background:#e9dfd1; }
+.about-slider-frame::after { z-index:2; }
+.about-slider-frame .about-slider-image { position:absolute; inset:0; z-index:0; opacity:0; transform:scale(1.035); transition:opacity .9s ease,transform 5.8s ease; }
+.about-slider-frame .about-slider-image.is-active { z-index:1; opacity:1; transform:scale(1); }
+.about-slider-frame .about-slider-image[src*="massage"] { object-position:center; }
+.about-slider-open { position:absolute; z-index:3; inset:0; padding:0; border:0; color:#fff; background:transparent; cursor:zoom-in; }
+.about-slider-open > span { position:absolute; top:20px; right:20px; display:flex; align-items:center; gap:8px; padding:9px 12px; border:1px solid rgba(255,255,255,.42); border-radius:18px; opacity:0; background:rgba(6,22,46,.38); font-size:10px; letter-spacing:.12em; text-transform:uppercase; backdrop-filter:blur(8px); transform:translateY(-5px); transition:opacity .25s,transform .25s; }
+.about-slider-open svg { width:14px; height:14px; }
+.about-slider-open :is(circle,path) { fill:none; stroke:currentColor; stroke-linecap:round; stroke-width:1.5; }
+.about-slider-frame:hover .about-slider-open > span,.about-slider-open:focus-visible > span { opacity:1; transform:translateY(0); }
+.about-slider-open:focus-visible { outline:2px solid #fff; outline-offset:-5px; }
+.about-slider-controls { position:absolute; z-index:4; left:22px; bottom:20px; display:flex; align-items:center; gap:12px; }
+.about-slider-controls > button { display:grid; width:34px; height:34px; padding:0; place-items:center; border:1px solid #f0d090; border-radius:50%; color:#06162e; background:#f0d090; box-shadow:0 5px 16px rgba(6,22,46,.34),0 0 0 3px rgba(255,255,255,.16); cursor:pointer; transition:background .25s,border-color .25s,box-shadow .25s,transform .25s; }
+.about-slider-controls > button:hover { border-color:#fff1ce; background:#fff1ce; box-shadow:0 7px 20px rgba(6,22,46,.42),0 0 0 4px rgba(255,255,255,.22); transform:scale(1.08); }
+.about-slider-controls svg { width:16px; height:16px; }
+.about-slider-controls path { fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.6; }
+.about-slider-dots { display:flex; align-items:center; gap:7px; }
+.about-slider-dots button { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.48); cursor:pointer; transition:width .3s,background .3s,border-radius .3s; }
+.about-slider-dots button.is-active { width:25px; border-radius:8px; background:#fff; }
+.about-slider-plaque { z-index:5; animation:about-plaque-in .5s ease both; }
+
+.studio-lightbox { position:fixed; z-index:2000; inset:0; display:flex; align-items:center; justify-content:center; padding:38px 94px; color:#fff; background:rgba(2,9,20,.94); backdrop-filter:blur(12px); animation:studio-lightbox-in .28s ease both; }
+.studio-lightbox-content { display:flex; max-width:calc(100vw - 210px); max-height:calc(100vh - 76px); align-items:center; flex-direction:column; margin:0; }
+.studio-lightbox-content img { display:block; width:auto; max-width:100%; height:auto; max-height:calc(100vh - 170px); object-fit:contain; border-radius:4px; box-shadow:0 30px 90px rgba(0,0,0,.5); }
+.studio-lightbox-content figcaption { display:grid; grid-template-columns:auto auto; gap:3px 18px; align-self:stretch; padding-top:15px; }
+.studio-lightbox-content figcaption span { grid-row:1/3; align-self:center; color:#d2ad63; font-family:var(--font-forum),serif; font-size:15px; letter-spacing:.1em; }
+.studio-lightbox-content figcaption strong { font-family:var(--font-forum),serif; font-size:20px; font-weight:400; line-height:1.2; }
+.studio-lightbox-content figcaption small { color:rgba(255,255,255,.56); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+.studio-lightbox-close,.studio-lightbox-arrow { position:absolute; display:grid; padding:0; place-items:center; border:1px solid #f0d090; border-radius:50%; color:#06162e; background:#f0d090; box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 4px rgba(240,208,144,.13); cursor:pointer; transition:background .25s,border-color .25s,box-shadow .25s,transform .25s; }
+.studio-lightbox-close:hover,.studio-lightbox-arrow:hover { border-color:#fff1ce; background:#fff1ce; box-shadow:0 12px 34px rgba(0,0,0,.55),0 0 0 5px rgba(240,208,144,.2); transform:scale(1.08); }
+.studio-lightbox-close:focus-visible,.studio-lightbox-arrow:focus-visible { outline:2px solid #d2ad63; outline-offset:3px; }
+.studio-lightbox-close { top:24px; right:28px; width:46px; height:46px; }
+.studio-lightbox-arrow { top:50%; width:52px; height:52px; transform:translateY(-50%); }
+.studio-lightbox-arrow:hover { transform:translateY(-50%) scale(1.08); }
+.studio-lightbox-arrow.is-previous { left:28px; }
+.studio-lightbox-arrow.is-next { right:28px; }
+.studio-lightbox :is(.studio-lightbox-close,.studio-lightbox-arrow) svg { width:22px; height:22px; }
+.studio-lightbox :is(.studio-lightbox-close,.studio-lightbox-arrow) path { fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.45; }
+
+@keyframes about-plaque-in {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes studio-lightbox-in {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@media (max-width:700px) {
+  .about-slider-controls { left:16px; bottom:14px; gap:9px; }
+  .about-slider-controls > button { width:32px; height:32px; }
+  .about-slider-dots { gap:6px; }
+  .about-slider-open > span { top:14px; right:14px; opacity:1; }
+  .studio-lightbox { padding:64px 15px 86px; }
+  .studio-lightbox-content { max-width:100%; max-height:100%; }
+  .studio-lightbox-content img { max-width:100%; max-height:calc(100svh - 190px); }
+  .studio-lightbox-content figcaption { padding:14px 8px 0; }
+  .studio-lightbox-content figcaption strong { font-size:18px; }
+  .studio-lightbox-close { top:14px; right:14px; width:42px; height:42px; }
+  .studio-lightbox-arrow { top:auto; bottom:18px; width:44px; height:44px; transform:none; }
+  .studio-lightbox-arrow:hover { transform:scale(1.08); }
+  .studio-lightbox-arrow.is-previous { left:calc(50% - 54px); }
+  .studio-lightbox-arrow.is-next { right:calc(50% - 54px); }
+}
