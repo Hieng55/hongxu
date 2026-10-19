@@ -553,7 +553,7 @@ export default function Home() {
             ))}
           </nav>
 
-          <a href="#contact" className="header-booking">
+          <a href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer" className="header-booking">
             <span>Book an appointment</span><ArrowIcon />
           </a>
 
@@ -586,8 +586,8 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a href="#services" className="primary-button">
-                Explore our services <ArrowIcon />
+              <a href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer" className="primary-button">
+                Book an appointment <ArrowIcon />
               </a>
               <a href="tel:+12066019801" className="text-link">
                 <span>206-601-9801</span><i aria-hidden="true" />
@@ -653,7 +653,7 @@ export default function Home() {
             </div>
 
             <div className="about-cta-row">
-              <a href="#contact" className="about-consultation-button">
+              <a href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer" className="about-consultation-button">
                 <span>Book a consultation</span><ArrowIcon />
               </a>
               <span className="about-cta-note">Private · Personal · By appointment</span>
@@ -708,7 +708,7 @@ export default function Home() {
           <p className="services-description">
             A considered collection of aesthetic and wellness services, personalized for where you are and how you want to feel.
           </p>
-          <a href="#contact" className="services-consultation">
+          <a href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer" className="services-consultation">
             Find your treatment <ArrowIcon />
           </a>
         </div>
@@ -745,7 +745,7 @@ export default function Home() {
         <p className="gallery-results-note">Individual results may vary.</p>
         <div className="gallery-action-row">
           <p><strong>Ready for your next step?</strong><span>Let&apos;s create a treatment plan shaped around you.</span></p>
-          <a className="gallery-action" href="#contact">Book a consultation <ArrowIcon /></a>
+          <a className="gallery-action" href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer">Book a consultation <ArrowIcon /></a>
         </div>
       </section>
 

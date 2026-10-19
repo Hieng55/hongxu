@@ -38,7 +38,7 @@ export default function SiteHeader({ active }: { active: string }) {
           {links.map((link) => <Link className={link.id === active ? "is-active" : ""} href={link.href} key={link.id}>{link.label}</Link>)}
         </nav>
 
-        <a className="site-header-book" href="tel:+12066019801">Book an appointment <ArrowIcon /></a>
+        <a className="site-header-book" href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer">Book an appointment <ArrowIcon /></a>
 
         <button className={`site-header-menu-button${menuOpen ? " is-open" : ""}`} type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /></button>
 

@@ -56,7 +56,7 @@ export default function AboutPage() {
             </div>
 
             <div className="about-cta-row">
-              <a href="tel:+12066019801" className="about-consultation-button"><span>Start a conversation</span><ArrowIcon /></a>
+              <a href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer" className="about-consultation-button"><span>Start a conversation</span><ArrowIcon /></a>
               <span className="about-cta-note">Private · Personal · By appointment</span>
             </div>
 

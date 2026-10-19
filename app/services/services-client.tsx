@@ -196,7 +196,7 @@ export default function ServicesClient() {
               </div>
 
               {activeService.note && <p className="wm-tab-note">{activeService.note}</p>}
-              <a className="wm-tab-book" href="tel:+12066019801">Book this service <ArrowIcon /></a>
+              <a className="wm-tab-book" href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer">Book this service <ArrowIcon /></a>
             </div>
           </article>
         </div>

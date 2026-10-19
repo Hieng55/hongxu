@@ -23,7 +23,7 @@ export default function SiteFooter() {
             <span><strong id="footer-heading">HONGXU</strong><small>Wellness</small></span>
           </a>
           <p>Thoughtful aesthetics and whole-body wellness, personalized for the way you want to look and feel.</p>
-          <a className="footer-booking" href="tel:+12066019801"><span>Book an appointment</span><ArrowIcon /></a>
+          <a className="footer-booking" href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer"><span>Book an appointment</span><ArrowIcon /></a>
         </div>
 
         <nav className="footer-column" aria-label="Footer navigation">

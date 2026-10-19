@@ -85,7 +85,7 @@ export default function GalleryClient() {
         </div>
         <div className="gallery-results-grid">{galleryCases.map((item, index) => <Comparison item={item} index={index} key={item.title} />)}</div>
         <p className="gallery-results-note">Individual results may vary.</p>
-        <div className="gallery-action-row"><p><strong>Wondering what may be right for you?</strong><span>Begin with a private, personalized conversation.</span></p><a className="gallery-action" href="/contact">Book a consultation <ArrowIcon /></a></div>
+        <div className="gallery-action-row"><p><strong>Wondering what may be right for you?</strong><span>Begin with a private, personalized conversation.</span></p><a className="gallery-action" href="https://www.vagaro.com/hongxugong" target="_blank" rel="noreferrer">Book a consultation <ArrowIcon /></a></div>
       </section>
 
       <SiteFooter />
