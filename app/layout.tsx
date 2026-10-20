@@ -63,6 +63,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: {
+    google: "IJkkEzd-zbQBTS_yoN1PtzlIGq7GW9yk9G8SNYaF828",
+  },
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "HONGXU" },
   icons: {
